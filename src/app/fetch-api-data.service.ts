@@ -4,6 +4,7 @@ import {
   HttpHeaders,
   HttpErrorResponse,
   HttpClient,
+  HttpResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
@@ -22,6 +23,24 @@ export class UserRegistrationService {
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {} // The namespace (here: private) is a way of initializing the instance with whatever is given as a parameter (here: http). http is of Type HttpClient
 
+  // Handle HTTP errors
+  private handleError(error: HttpErrorResponse): any {
+    if (error.error instanceof ErrorEvent) {
+      console.error('Some error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Error Status code ${error.status}, ` + `Error body is: ${error.error}`
+      );
+    }
+    return throwError('Something bad happened; please try again later.');
+  }
+
+  // Non-typed response extraction
+  private extractResponseData(res: HttpResponse<any>): any {
+    const body = res;
+    return body || {};
+  }
+
   // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
@@ -38,8 +57,12 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
+      );
   }
 
   // added services logic to other endpoints for making an api call
@@ -61,8 +84,12 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
+      );
   }
 
   // Api call - get director
@@ -74,8 +101,12 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
+      );
   }
 
   // Api call - get genre
@@ -87,8 +118,12 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
+      );
   }
 
   // Api call - get user
@@ -100,8 +135,12 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
+      );
   }
 
   // Api call - Get favourite movies for user
@@ -113,8 +152,12 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
+      );
   }
 
   // Api call - Add favourite movies to a user's list of favourites
@@ -127,8 +170,12 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
+      );
   }
 
   // Api call - Edit a user
@@ -139,8 +186,12 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
+      );
   }
 
   // Api call - Delete a user
@@ -151,8 +202,12 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
+      );
   }
 
   // Api call - Delete a movie from Favourites
@@ -166,25 +221,11 @@ export class UserRegistrationService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
+        observe: 'response',
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
-  }
-
-  // Handle HTTP errors
-  private handleError(error: HttpErrorResponse): any {
-    if (error.error instanceof ErrorEvent) {
-      console.error('Some error occurred:', error.error.message);
-    } else {
-      console.error(
-        `Error Status code ${error.status}, ` + `Error body is: ${error.error}`
+      .pipe(
+        map((response: HttpResponse<any>) => response),
+        catchError(this.handleError)
       );
-    }
-    return throwError('Something bad happened; please try again later.');
-  }
-
-  // Non-typed response extraction
-  private extractResponseData(res: Response): any {
-    const body = res;
-    return body || {};
   }
 }
