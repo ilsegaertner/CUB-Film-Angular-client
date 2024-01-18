@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import {
   HttpHeaders,
   HttpErrorResponse,
   HttpClient,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://cub-film-data-dc72bcc7ff05.herokuapp.com/';

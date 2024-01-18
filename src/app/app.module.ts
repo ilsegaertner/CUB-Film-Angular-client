@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { UserRegistrationService } from './fetch-api-data.service';
+import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 
 @NgModule({
   declarations: [AppComponent, UserRegistrationFormComponent],
@@ -31,8 +32,9 @@ import { UserRegistrationService } from './fetch-api-data.service';
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    FormsModule,
   ],
-  providers: [provideClientHydration()],
+  providers: [provideClientHydration(), UserRegistrationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
