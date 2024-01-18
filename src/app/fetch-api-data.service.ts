@@ -19,7 +19,7 @@ export class UserRegistrationService {
   // private: can only be accessed within the class where they are declared.
   // public: accessible from outside the class.
 
-  // Inject the HttpClient module to the constructor params
+  // Dependency Injection: Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {} // The namespace (here: private) is a way of initializing the instance with whatever is given as a parameter (here: http). http is of Type HttpClient
 
