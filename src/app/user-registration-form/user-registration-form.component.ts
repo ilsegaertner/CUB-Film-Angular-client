@@ -16,6 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './user-registration-form.component.scss',
 })
 export class UserRegistrationFormComponent implements OnInit {
+  // onInit = lifecycle hook which allows you to run some code when the component is  first initialized
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   /**
@@ -30,7 +31,7 @@ export class UserRegistrationFormComponent implements OnInit {
     public snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {} // This method is called once the component has received all inputs (all its data-bound properties) from the calling component - the real life user
 
   //This is the function responsible for sending the form inputs to the backend
   /**

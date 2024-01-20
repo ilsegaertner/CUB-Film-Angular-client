@@ -29,7 +29,8 @@ export class UserRegistrationService {
       console.error('Some error occurred:', error.error.message);
     } else {
       console.error(
-        `Error Status code ${error.status}, ` + `Error body is: ${error.error}`
+        `Error Status code ${error.status}, ` +
+          `Error body is: ${JSON.stringify(error.error)}`
       );
     }
     return throwError('Something bad happened; please try again later.');
@@ -70,9 +71,13 @@ export class UserRegistrationService {
   userLogin(userDetails: any): Observable<any> {
     // adding the public keyword is optional. they are public by default
     console.log(userDetails);
-    return this.http
-      .post(apiUrl + 'login', userDetails)
-      .pipe(catchError(this.handleError));
+    return this.http.post(apiUrl + 'login', userDetails).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Login Error:', error);
+        return throwError(error.error.message || 'Something went wrong.');
+      })
+    );
+    // .pipe(catchError(this.handleError));
   }
 
   // Api call - get movie
