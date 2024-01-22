@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, finalize, map, tap } from 'rxjs/operators';
 import {
   HttpHeaders,
   HttpErrorResponse,
@@ -71,12 +71,40 @@ export class UserRegistrationService {
   userLogin(userDetails: any): Observable<any> {
     // adding the public keyword is optional. they are public by default
     console.log(userDetails);
-    return this.http.post(apiUrl + 'login', userDetails).pipe(
-      catchError((error: HttpErrorResponse) => {
-        console.error('Login Error:', error);
-        return throwError(error.error.message || 'Something went wrong.');
+
+    const requestBody = {
+      Username: userDetails.Username,
+      Password: userDetails.Password,
+    };
+
+    return this.http
+      .post(apiUrl + 'login', requestBody, {
+        headers: { 'Content-Type': 'application/json' },
       })
-    );
+      .pipe(
+        tap((response: any) => {
+          // const token = response.token;
+          console.log('Response Token:', response.token);
+          localStorage.setItem('authToken', response.token);
+          localStorage.setItem('authToken', response.token);
+          console.log('Stored Token:', localStorage.getItem('authToken'));
+        }),
+        catchError((error: HttpErrorResponse) => {
+          console.error('Login Error:', error);
+
+          const errorMessage =
+            error.error && error.error.message
+              ? error.error.message
+              : 'Something went wrong.';
+
+          console.log('Error Body:', error.error);
+          return throwError(errorMessage);
+        }),
+        finalize(() => {
+          const token = localStorage.getItem('authToken');
+          console.log(token);
+        })
+      );
     // .pipe(catchError(this.handleError));
   }
 
