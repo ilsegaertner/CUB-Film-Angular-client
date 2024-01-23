@@ -73,8 +73,8 @@ export class UserRegistrationService {
     console.log(userDetails);
 
     const requestBody = {
-      Username: userDetails.Username,
-      Password: userDetails.Password,
+      username: userDetails.Username,
+      password: userDetails.Password,
     };
 
     return this.http
