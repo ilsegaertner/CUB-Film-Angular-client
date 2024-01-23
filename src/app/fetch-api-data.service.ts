@@ -71,41 +71,15 @@ export class UserRegistrationService {
   userLogin(userDetails: any): Observable<any> {
     // adding the public keyword is optional. they are public by default
     console.log(userDetails);
-
-    const requestBody = {
-      username: userDetails.Username,
-      password: userDetails.Password,
-    };
-
+    const queryParams = `?Username=${userDetails.Username}&Password=${userDetails.Password}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'x-www-form-urlencoded',
+    });
     return this.http
-      .post(apiUrl + 'login', requestBody, {
-        headers: { 'Content-Type': 'application/json' },
+      .post(apiUrl + 'login' + queryParams, null, {
+        headers,
       })
-      .pipe(
-        tap((response: any) => {
-          // const token = response.token;
-          console.log('Response Token:', response.token);
-          localStorage.setItem('authToken', response.token);
-          localStorage.setItem('authToken', response.token);
-          console.log('Stored Token:', localStorage.getItem('authToken'));
-        }),
-        catchError((error: HttpErrorResponse) => {
-          console.error('Login Error:', error);
-
-          const errorMessage =
-            error.error && error.error.message
-              ? error.error.message
-              : 'Something went wrong.';
-
-          console.log('Error Body:', error.error);
-          return throwError(errorMessage);
-        }),
-        finalize(() => {
-          const token = localStorage.getItem('authToken');
-          console.log(token);
-        })
-      );
-    // .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 
   // Api call - get movie
