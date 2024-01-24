@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { HttpResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { response } from 'express';
 
 @Component({
   selector: 'app-movie-card',
