@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> Director </mat-card-title>
+  </mat-card-header>
+  <br />
+  <mat-card-content>
+    <mat-card-subtitle style="color: #3f51b5">
+      {{ director?.Name }}
+    </mat-card-subtitle>
+    <!-- <mat-card-subtitle *ngIf="director.Death">
+      {{ director?.Birth }} - {{ director?.Death }}</mat-card-subtitle
+    > -->
+
+    <mat-card-subtitle
+      >* {{ director?.Birth
+      }}<span *ngIf="director?.Death">
+        - † {{ director?.Death }}</span
+      ></mat-card-subtitle
+    >
+
+    <br />
+    <mat-card-subtitle> {{ director?.Bio }} </mat-card-subtitle>
+    <br />
+    <!-- <mat-card-subtitle> {{ director?.Birth }}  </mat-card-subtitle> -->
+    <br />
+  </mat-card-content>
+</mat-card>

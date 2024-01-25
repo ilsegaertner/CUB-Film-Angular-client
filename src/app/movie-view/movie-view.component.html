@@ -1,0 +1,14 @@
+<mat-card *ngIf="data?.movie">
+  <mat-card-header
+    ><mat-card-title>
+      {{ data.movie.Title }}
+    </mat-card-title>
+    <mat-card-subtitle
+      >Directed by: {{ data.movie.Director.Name }}</mat-card-subtitle
+    >
+  </mat-card-header>
+
+  <img src="{{ data.movie.ImagePath }}" alt="{{ data.movie.Title }}" />
+  <mat-card-subtitle>Genre: {{ data.movie.Genre.Name }}</mat-card-subtitle>
+  <mat-card-subtitle>Year: {{ data.movie.Year }}</mat-card-subtitle>
+</mat-card>

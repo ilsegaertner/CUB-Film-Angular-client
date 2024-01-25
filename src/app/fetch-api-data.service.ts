@@ -134,18 +134,25 @@ export class UserRegistrationService {
   }
 
   // Api call - get user
-  getUser(Username: string): Observable<any> {
+  getUser(username: string): Observable<any> {
     // adding the public keyword is optional. they are public by default
     const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
     return this.http
-      .get(apiUrl + 'users/' + Username, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        }),
+      .get(apiUrl + 'users/' + encodeURIComponent(username), {
+        headers: headers,
         observe: 'response',
       })
       .pipe(
-        map((response: HttpResponse<any>) => response),
+        map((response: HttpResponse<any>) => {
+          if (response.body === null) {
+            console.log('Server returned null response.');
+          }
+          return response.body;
+        }),
+        // response),
         catchError(this.handleError)
       );
   }

@@ -1,1 +1,81 @@
-<p>user-profile-component works!</p>
+<app-navgation-bar></app-navgation-bar>
+
+<mat-card *ngIf="user">
+  <mat-card-header>
+    <mat-card-title>Your Infos:</mat-card-title>
+  </mat-card-header>
+  <br />
+  <mat-card-content
+    ><mat-card-subtitle> Username: {{ user?.Username }}</mat-card-subtitle>
+    <mat-card-subtitle> Email: {{ user?.Email }}</mat-card-subtitle>
+    <mat-card-subtitle>
+      Birthday: {{ user?.Birthday | date }}</mat-card-subtitle
+    ></mat-card-content
+  >
+
+  <mat-dialog-content> </mat-dialog-content>
+</mat-card>
+
+<mat-card *ngIf="user">
+  <mat-card-header>
+    <mat-card-title>Update Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="updateProfile()">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="username"
+          [(ngModel)]="userData.username"
+          placeholder="Choose a new Username"
+      /></mat-form-field>
+      <mat-form-field
+        ><input
+          matInput
+          type="password"
+          name="password"
+          [(ngModel)]="userData.password"
+          placeholder="Choose a new Password"
+      /></mat-form-field>
+      <mat-form-field
+        ><input
+          matInput
+          type="date"
+          name="birthday"
+          [(ngModel)]="userData.birthday"
+          placeholder="Update your birthday"
+          value="{{ user?.Birthday | date }}"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="email"
+          [(ngModel)]="userData.email"
+          placeholder="Update your email"
+          value="{{ user?.Email }}"
+        />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions
+    ><button mat-raised-button color="primary" (click)="updateProfile()">
+      Update
+    </button></mat-card-actions
+  >
+</mat-card>
+
+<mat-card *ngIf="user">
+  <mat-card-header>
+    <mat-card-title>Delete Profile</mat-card-title>
+  </mat-card-header>
+  <mat-dialog-content
+    ><mat-card-actions
+      ><button mat-raised-button color="primary">
+        Delete
+      </button></mat-card-actions
+    >
+  </mat-dialog-content>
+</mat-card>

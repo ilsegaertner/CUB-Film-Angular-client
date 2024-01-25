@@ -15,6 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatToolbarRow } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { UserRegistrationService } from './fetch-api-data.service';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
@@ -26,10 +28,16 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponentComponent } from './user-profile-component/user-profile-component.component';
+import { NavgationBarComponent } from './navgation-bar/navgation-bar.component';
+import { MovieViewComponent } from './movie-view/movie-view.component';
+import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
+import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
+import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: UserProfileComponentComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -41,6 +49,11 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     UserProfileComponentComponent,
+    NavgationBarComponent,
+    MovieViewComponent,
+    GenreDialogComponent,
+    DirectorDialogComponent,
+    SynopsisDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +69,8 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     MatIconModule,
+    MatToolbar,
+    MatToolbarRow,
   ],
   providers: [provideClientHydration(), UserRegistrationService],
   bootstrap: [AppComponent],
