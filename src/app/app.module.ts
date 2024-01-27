@@ -12,11 +12,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatToolbarRow } from '@angular/material/toolbar';
+
 import { FormsModule } from '@angular/forms';
 import { UserRegistrationService } from './fetch-api-data.service';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
     MatIconModule,
     MatToolbar,
     MatToolbarRow,
+    MatFormField,
   ],
   providers: [provideClientHydration(), UserRegistrationService],
   bootstrap: [AppComponent],

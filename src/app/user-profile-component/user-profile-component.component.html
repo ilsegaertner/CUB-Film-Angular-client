@@ -15,7 +15,7 @@
 
   <mat-dialog-content> </mat-dialog-content>
 </mat-card>
-
+<!-- 
 <mat-card *ngIf="user">
   <mat-card-header>
     <mat-card-title>Update Profile</mat-card-title>
@@ -60,6 +60,63 @@
       </mat-form-field>
     </form>
   </mat-card-content>
+  <mat-card-actions
+    ><button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="updateProfile()"
+    >
+      Update
+    </button></mat-card-actions
+  >
+</mat-card> -->
+
+<mat-card *ngIf="user">
+  <mat-card-header>
+    <mat-card-title>Update Profile</mat-card-title>
+  </mat-card-header>
+
+  <form (ngSubmit)="updateProfile()">
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        type="text"
+        name="username"
+        [(ngModel)]="userData.username"
+        placeholder="Choose a new Username"
+    /></mat-form-field>
+    <mat-form-field appearance="outline"
+      ><input
+        matInput
+        type="password"
+        name="password"
+        [(ngModel)]="userData.password"
+        placeholder="Choose a new Password"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline"
+      ><input
+        matInput
+        type="date"
+        name="birthday"
+        [(ngModel)]="userData.birthday"
+        placeholder="Update your birthday"
+        value="{{ user?.Birthday | date }}"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        type="text"
+        name="email"
+        [(ngModel)]="userData.email"
+        placeholder="Update your email"
+        value="{{ user?.Email }}"
+      />
+    </mat-form-field>
+  </form>
+
   <mat-card-actions
     ><button
       mat-raised-button
