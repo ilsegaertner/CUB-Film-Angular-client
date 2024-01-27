@@ -33,6 +33,7 @@ import { MovieViewComponent } from './movie-view/movie-view.component';
 import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
 import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
     GenreDialogComponent,
     DirectorDialogComponent,
     SynopsisDialogComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,

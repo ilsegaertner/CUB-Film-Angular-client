@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-user-profile-component',
@@ -10,10 +13,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UserProfileComponentComponent implements OnInit {
   user: any;
   userData: any = {}; // Initialize userData object to store form values
+  confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent> | undefined;
 
   constructor(
     public fetchApiData: UserRegistrationService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -59,8 +65,6 @@ export class UserProfileComponentComponent implements OnInit {
       return; // Stop the update process if the email is invalid
     }
 
-    console.log('Email format validated. Sending update request...');
-
     // Call service method to update user data
     this.fetchApiData.editUser(this.user.Username, this.userData).subscribe(
       (response) => {
@@ -84,5 +88,53 @@ export class UserProfileComponentComponent implements OnInit {
         );
       }
     );
+  }
+
+  deleteProfile(): void {
+    if (this.user && this.user.Username) {
+      this.fetchApiData.deleteUser(this.user.Username).subscribe(
+        (response) => {
+          console.log('Delete response:', response);
+          localStorage.removeItem('user');
+          localStorage.removeItem('token');
+          this.router.navigate(['/welcome']);
+        },
+        (error) => {
+          console.error('Error deleting user', error);
+          this.snackBar.open(
+            'Error deleting user. Please try again.',
+            'Close',
+            {
+              duration: 3000,
+            }
+          );
+        }
+      );
+    } else {
+      console.error('User or username is not defined.');
+      // Handle the case where user or username is not defined
+    }
+  }
+
+  openConfirmationDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '300px',
+      data: {
+        title: 'Confirmation',
+        message: 'Are you sure you want to delete your profile?',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        if (result) {
+          this.deleteProfile();
+        } else {
+          console.log('Deletion canceled by the user');
+        }
+      } else {
+        console.warn('Dialog closed without a result');
+      }
+    });
   }
 }

@@ -23,16 +23,46 @@ export class UserRegistrationService {
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {} // The namespace (here: private) is a way of initializing the instance with whatever is given as a parameter (here: http). http is of Type HttpClient
 
-  // Handle HTTP errors
-  private handleError(error: HttpErrorResponse): any {
+  // // Handle HTTP errors
+  // private handleError(error: HttpErrorResponse): any {
+  //   if (error.error instanceof ErrorEvent) {
+  //     console.error('An error occurred:', error.error.message);
+  //   } else {
+  //     console.error(
+  //       `Error Status code ${error.status}, ` +
+  //         `Error body is: ${JSON.stringify(error.error)}`
+  //     );
+  //   }
+
+  //   console.error('Full error details:', error);
+  //   return throwError('Something bad happened; please try again later.');
+  // }
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
-      console.error('Some error occurred:', error.error.message);
+      console.error('An error occurred:', error.error.message);
     } else {
       console.error(
-        `Error Status code ${error.status}, ` +
-          `Error body is: ${JSON.stringify(error.error)}`
+        `Error Status code ${error.status}, Error body is: ${JSON.stringify(
+          error.error
+        )}`
       );
+
+      const contentType = error.headers.get('content-type')?.toLowerCase();
+
+      if (contentType && contentType.includes('json')) {
+        try {
+          // If the content type is JSON, parse the error body
+          console.error('Full error details:', JSON.parse(error.error));
+        } catch (jsonError) {
+          console.error('Error parsing JSON:', jsonError);
+        }
+      } else {
+        // If the content type is not JSON, handle it differently
+        console.error('Non-JSON response. Details:', error.error);
+      }
     }
+
     return throwError('Something bad happened; please try again later.');
   }
 
@@ -210,7 +240,10 @@ export class UserRegistrationService {
 
   // Api call - Delete a user
   deleteUser(Username: string): Observable<any> {
+    console.log('Deleting user with username:', Username);
+
     const token = localStorage.getItem('token');
+    console.log('Token:', token); // Log the token to the console
     return this.http
       .delete(apiUrl + 'users/' + Username, {
         headers: new HttpHeaders({
@@ -219,7 +252,17 @@ export class UserRegistrationService {
         observe: 'response',
       })
       .pipe(
-        map((response: HttpResponse<any>) => response),
+        tap((response) => console.log('Response from server:', response)),
+        map((response: HttpResponse<any>) => {
+          if (response.status === 201) {
+            // Successful deletion, return a success message or any other relevant data
+            return { success: true, message: 'User successfully deleted' };
+          } else {
+            // For other status codes, pass the response through
+            return response;
+          }
+        }),
+
         catchError(this.handleError)
       );
   }
