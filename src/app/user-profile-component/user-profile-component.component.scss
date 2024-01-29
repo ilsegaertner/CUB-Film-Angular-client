@@ -1,0 +1,28 @@
+.profile-wrapper {
+  padding: 111px 20px;
+  display: grid;
+  grid-gap: 108px;
+  max-width: 693px;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.user-info {
+  padding: 31px 0px;
+}
+
+.user-info-content {
+  display: grid;
+  grid-gap: 4px;
+}
+
+.update-user-wrapper {
+  padding: 43px 18px;
+}
+
+.update-user-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-top: 20px;
+}

@@ -1,0 +1,23 @@
+.navigation-wrapper {
+  // display: grid;
+  // padding: 20px;
+  margin: 0 auto;
+  max-width: 90vw;
+  color: white;
+}
+
+.mat-toolbar-multiple-rows {
+  flex-direction: row;
+  justify-content: space-evenly;
+  box-shadow: 0px 0px 10px #73737385;
+}
+
+.mat-toolbar-row {
+  justify-content: space-evenly;
+}
+
+a {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+}
