@@ -1,8 +1,27 @@
 <app-navgation-bar></app-navgation-bar>
 
-<div class="movie-card-wrapper">
-  <h1>CUB Film Selection</h1>
+<div class="header-wrapper">
+  <div class="content">
+    <div class="content__container">
+      <p class="content__container__text"></p>
 
+      <ul class="content__container__list">
+        <li class="content__container__list__item">Lynch !</li>
+        <li class="content__container__list__item">Wenders !</li>
+        <li class="content__container__list__item">Bergmann !</li>
+        <li class="content__container__list__item">Tarkovsky !</li>
+        <li class="content__container__list__item">Coppola !</li>
+        <li class="content__container__list__item">Kieslowski !</li>
+        <li class="content__container__list__item">Ozu !</li>
+        <li class="content__container__list__item">Kaurismäki !</li>
+      </ul>
+    </div>
+  </div>
+
+  <h1>CUB Film Selection</h1>
+</div>
+
+<div class="movie-card-wrapper">
   <div class="container">
     <mat-card
       *ngFor="let movie of movies; let i = index"

@@ -49,13 +49,41 @@ body {
   margin: 0px 33px;
   // font-family: Roboto, "Helvetica Neue", sans-serif;
   font-family: Geist, sans-serif;
+  // background-image: url("../../../Portfolio-website-copy/img/photo-1562362841-97d9eae6b213.avif");
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place the pseudo-element behind the content */
+  background-image: url("../../../Portfolio-website-copy/img/photo-1581250505145-d35ac1eab29d.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(3px); /* Adjust the blur value as needed */
+  opacity: 0.9;
 }
 
 @font-face {
   font-family: "Geist";
-  src: local("Roboto"),
+  src: local("Geist"),
     url("../../../Portfolio-website-copy/img/Geist/Geist-Regular.woff2")
       format("woff2");
   font-weight: 400;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: local("Geist"),
+    url("../../../Portfolio-website-copy/img/Geist/Geist-Light.woff2")
+      format("woff2");
+  font-weight: 200;
+  font-style: light;
 }
