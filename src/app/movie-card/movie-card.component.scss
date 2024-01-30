@@ -10,7 +10,7 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 24px;
   // padding: 20px;
-  padding: 35px;
+  padding: 25px;
   border: 0.1px solid #eeeeee;
   margin: 27px auto;
   // border-radius: 2rem;
@@ -46,6 +46,7 @@ h1 {
 
 .movie-card-wrapper {
   padding: 37px;
+  box-shadow: 2px 792px 266px #6944447d;
 }
 
 .mat-icon {
