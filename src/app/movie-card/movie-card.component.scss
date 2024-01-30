@@ -1,6 +1,6 @@
 .header-wrapper {
   display: grid;
-
+  margin-top: -91px;
   justify-content: center;
   justify-items: center;
 }
@@ -41,7 +41,8 @@ h1 {
   color: #191e282b;
   text-shadow: 0px 0px 1px #464a54;
   font-weight: 100;
-  mix-blend-mode: lighten;
+  font-size: 3rem;
+  // mix-blend-mode: lighten;
 }
 
 .movie-card-wrapper {
@@ -86,6 +87,7 @@ img {
     overflow: hidden;
     height: 35px;
     padding: 0 44px;
+    opacity: 0.3;
 
     &:before {
       content: "[";
