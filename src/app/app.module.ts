@@ -37,9 +37,13 @@ import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.compo
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 const appRoutes: Routes = [
-  { path: 'welcome', component: WelcomePageComponent },
-  { path: 'movies', component: MovieCardComponent },
-  { path: 'profile', component: UserProfileComponentComponent },
+  { path: 'welcome', title: 'Welcome', component: WelcomePageComponent },
+  { path: 'movies', title: 'Movies', component: MovieCardComponent },
+  {
+    path: 'profile',
+    title: 'Profile',
+    component: UserProfileComponentComponent,
+  },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
