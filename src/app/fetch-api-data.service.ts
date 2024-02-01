@@ -23,21 +23,6 @@ export class UserRegistrationService {
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {} // The namespace (here: private) is a way of initializing the instance with whatever is given as a parameter (here: http). http is of Type HttpClient
 
-  // // Handle HTTP errors
-  // private handleError(error: HttpErrorResponse): any {
-  //   if (error.error instanceof ErrorEvent) {
-  //     console.error('An error occurred:', error.error.message);
-  //   } else {
-  //     console.error(
-  //       `Error Status code ${error.status}, ` +
-  //         `Error body is: ${JSON.stringify(error.error)}`
-  //     );
-  //   }
-
-  //   console.error('Full error details:', error);
-  //   return throwError('Something bad happened; please try again later.');
-  // }
-
   private handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
@@ -99,7 +84,6 @@ export class UserRegistrationService {
   // added services logic to other endpoints for making an api call
   // Api call - user login
   userLogin(userDetails: any): Observable<any> {
-    // adding the public keyword is optional. they are public by default
     console.log(userDetails);
     const queryParams = `?Username=${userDetails.Username}&Password=${userDetails.Password}`;
     const headers = new HttpHeaders({

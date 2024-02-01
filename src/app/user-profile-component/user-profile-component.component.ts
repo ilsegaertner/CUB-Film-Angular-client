@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-user-profile-component',
@@ -20,11 +21,13 @@ export class UserProfileComponentComponent implements OnInit {
     public fetchApiData: UserRegistrationService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.getUser();
+    console.log('Initial user:', this.user);
   }
 
   getUser(): void {
@@ -42,53 +45,57 @@ export class UserProfileComponentComponent implements OnInit {
   }
 
   updateProfile(): void {
-    console.log('Update profile initiated. UserData:', this.userData);
-
-    // Ensure required fields are included
-
-    this.userData.password = this.userData.password || this.userData.Password;
-    this.userData.email = this.userData.email || this.userData.Email;
-
-    console.log('Update profile initiated. UserData:', this.userData);
-
-    // Validate email format
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (this.userData.email && !emailPattern.test(this.userData.email)) {
-      console.error('Invalid email format');
-      // Show snackbar message for error
-      this.snackBar.open(
-        'Invalid email format. Please enter a valid email address.',
-        'Close',
-        {
-          duration: 3000,
-        }
-      );
-      return; // Stop the update process if the email is invalid
-    }
+    console.log('Before profile update:', this.user);
 
     // Call service method to update user data
-    this.fetchApiData.editUser(this.user.Username, this.userData).subscribe(
-      (response) => {
-        // Handle successful update
-        console.log('Profile updated successfully:', response);
-        // Optionally, update the local user object in case of changes
-        this.user = response;
-        localStorage.setItem('user', JSON.stringify(response));
-        this.snackBar.open('Profile updated successfully', 'Close', {
-          duration: 3000,
-        });
-      },
-      (error) => {
-        console.error('Error updating profile:', error);
-        this.snackBar.open(
-          'Error updating profile. Please try again.',
-          'Close',
-          {
+    this.fetchApiData
+      .editUser(
+        this.user.Username,
+        {
+          Username: this.userData.username,
+          Password: this.userData.password,
+          Email: this.userData.email,
+          Birthday: this.userData.birthday,
+        }
+
+        // this.userData
+      )
+      .subscribe(
+        (response) => {
+          // Handle successful update
+          console.log('Profile updated successfully:', response);
+          // Optionally, update the local user object in case of changes
+
+          this.user = response.body;
+
+          this.userData.username = response.body.Username;
+          this.userData.email = response.body.Email;
+          this.userData.birthday = response.body.Birthday;
+          this.userData.password = response.body.Password;
+          localStorage.setItem('user', JSON.stringify(response.body));
+          this.snackBar.open('Profile updated successfully', 'Close', {
             duration: 3000,
-          }
-        );
-      }
-    );
+          });
+
+          this.user.Username = response.Username;
+          this.user.Email = response.Email;
+          this.user.Birthday = response.Birthday;
+
+          this.cdRef.detectChanges();
+
+          console.log('After profile update:', this.user);
+        },
+        (error) => {
+          console.error('Error updating profile:', error);
+          this.snackBar.open(
+            'Error updating profile. Please try again.',
+            'Close',
+            {
+              duration: 3000,
+            }
+          );
+        }
+      );
   }
 
   deleteProfile(): void {
