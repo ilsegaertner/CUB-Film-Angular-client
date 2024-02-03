@@ -1,10 +1,19 @@
-.main-page {
+.main-page-wrapper {
+  padding: 20px;
+  position: relative;
+  margin: 0 auto;
+  width: 74%;
+  max-width: 482px;
+  top: 50%;
+  border-radius: 35px;
+}
+
+.login-signup-form {
   padding: 20px;
   display: grid;
   grid-gap: 29px;
-  justify-content: space-around;
   position: relative;
-  top: 50%;
+  text-align: center;
 }
 
 h1 {
