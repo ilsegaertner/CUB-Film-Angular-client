@@ -22,6 +22,17 @@
 </div>
 
 <div class="movie-card-wrapper">
+  <div class="search-bar">
+    <mat-form-field appearance="fill">
+      <mat-label>Search Movies</mat-label>
+      <input
+        matInput
+        placeholder="Enter movie title"
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
+      />
+    </mat-form-field>
+  </div>
   <div class="container">
     <mat-card
       *ngFor="let movie of movies; let i = index"

@@ -7,6 +7,9 @@ import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from '../director-dialog/director-dialog.component';
 import { SynopsisDialogComponent } from '../synopsis-dialog/synopsis-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { response } from 'express';
+// import { FormsModule } from '@angular/forms';
+// import { MatInputModule, MatFormFieldModule } from '@angular/material';
 
 @Component({
   selector: 'app-movie-card',
@@ -15,8 +18,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MovieCardComponent {
   movies: any[] = [];
-
   favorites: { [movieId: string]: boolean } = {};
+  searchTerm: string = '';
 
   constructor(
     public fetchApiData: UserRegistrationService,
@@ -104,5 +107,28 @@ export class MovieCardComponent {
   // Check if the movie card is marked as favorite
   isFavorite(movieId: string): boolean {
     return this.favorites[movieId] || false;
+  }
+
+  onSearch(): void {
+    this.fetchApiData.getAllMovies().subscribe(
+      (response: HttpResponse<any[]>) => {
+        if (Array.isArray(response.body)) {
+          this.movies = response.body.filter(
+            (movie) =>
+              movie.Title.toLowerCase().includes(
+                this.searchTerm.toLowerCase()
+              ) ||
+              movie.Director.Name.toLowerCase().includes(
+                this.searchTerm.toLowerCase()
+              )
+          );
+        } else {
+          console.error('Invalid response format. Expected an array.');
+        }
+      },
+      (error) => {
+        console.error('Error fetching movies:', error);
+      }
+    );
   }
 }
