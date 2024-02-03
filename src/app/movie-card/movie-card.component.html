@@ -1,72 +1,74 @@
 <app-navgation-bar></app-navgation-bar>
 
-<div class="header-wrapper">
-  <div class="content">
-    <div class="content__container">
-      <p class="content__container__text"></p>
+<div class="home">
+  <div class="header-wrapper">
+    <div class="content">
+      <div class="content__container">
+        <p class="content__container__text"></p>
 
-      <ul class="content__container__list">
-        <li class="content__container__list__item">Lynch !</li>
-        <li class="content__container__list__item">Wenders !</li>
-        <li class="content__container__list__item">Bergmann !</li>
-        <li class="content__container__list__item">Tarkovsky !</li>
-        <li class="content__container__list__item">Coppola !</li>
-        <li class="content__container__list__item">Kieslowski !</li>
-        <li class="content__container__list__item">Ozu !</li>
-        <li class="content__container__list__item">Kaurismäki !</li>
-      </ul>
+        <ul class="content__container__list">
+          <li class="content__container__list__item">Lynch !</li>
+          <li class="content__container__list__item">Wenders !</li>
+          <li class="content__container__list__item">Bergmann !</li>
+          <li class="content__container__list__item">Tarkovsky !</li>
+          <li class="content__container__list__item">Coppola !</li>
+          <li class="content__container__list__item">Kieslowski !</li>
+          <li class="content__container__list__item">Ozu !</li>
+          <li class="content__container__list__item">Kaurismäki !</li>
+        </ul>
+      </div>
     </div>
+
+    <h1>CUB Film Selection</h1>
   </div>
 
-  <h1>CUB Film Selection</h1>
-</div>
+  <div class="movie-card-wrapper">
+    <div class="search-bar">
+      <mat-form-field appearance="fill">
+        <mat-label>Search Movies</mat-label>
+        <input
+          matInput
+          placeholder="Enter movie title"
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()"
+        />
+      </mat-form-field>
+    </div>
+    <div class="container">
+      <mat-card
+        *ngFor="let movie of movies; let i = index"
+        class="movie-container"
+      >
+        <mat-card-header
+          ><mat-card-title>
+            {{ movie.Title }}
+          </mat-card-title>
+          <mat-card-subtitle
+            >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
+          >
+        </mat-card-header>
 
-<div class="movie-card-wrapper">
-  <div class="search-bar">
-    <mat-form-field appearance="fill">
-      <mat-label>Search Movies</mat-label>
-      <input
-        matInput
-        placeholder="Enter movie title"
-        [(ngModel)]="searchTerm"
-        (input)="onSearch()"
-      />
-    </mat-form-field>
-  </div>
-  <div class="container">
-    <mat-card
-      *ngFor="let movie of movies; let i = index"
-      class="movie-container"
-    >
-      <mat-card-header
-        ><mat-card-title>
-          {{ movie.Title }}
-        </mat-card-title>
-        <mat-card-subtitle
-          >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
-        >
-      </mat-card-header>
-
-      <img
-        src="{{ movie.ImagePath }}"
-        alt="{{ movie.Title }}"
-        (click)="openMovieView(movie)"
-        loading="lazy"
-      />
-      <mat-card-actions>
-        <a mat-button color="primary" (click)="openGenreDialog(movie)">
-          Genre
-        </a>
-        <a mat-button color="primary" (click)="openDirectorDialog(movie)"
-          >Director</a
-        >
-        <a mat-button color="primary" (click)="openSynopsisDialog(movie)">
-          Synopsis
-        </a>
-        <mat-icon (click)="toggleFavorite(movie._id, movie.Title)">
-          {{ isFavorite(movie._id) ? "favorite" : "favorite_border" }}
-        </mat-icon>
-      </mat-card-actions>
-    </mat-card>
+        <img
+          src="{{ movie.ImagePath }}"
+          alt="{{ movie.Title }}"
+          (click)="openMovieView(movie)"
+          loading="lazy"
+        />
+        <mat-card-actions>
+          <a mat-button color="primary" (click)="openGenreDialog(movie)">
+            Genre
+          </a>
+          <a mat-button color="primary" (click)="openDirectorDialog(movie)"
+            >Director</a
+          >
+          <a mat-button color="primary" (click)="openSynopsisDialog(movie)">
+            Synopsis
+          </a>
+          <mat-icon (click)="toggleFavorite(movie._id, movie.Title)">
+            {{ isFavorite(movie._id) ? "favorite" : "favorite_border" }}
+          </mat-icon>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
 </div>
