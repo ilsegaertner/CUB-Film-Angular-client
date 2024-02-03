@@ -1,29 +1,25 @@
 .header-wrapper {
-  // display: grid;
-  // justify-content: center;
-  // justify-items: center;
-  // margin-top: -91px;
-  display: flex;
-
-  margin-top: -91px;
-  justify-content: space-evenly;
-
-  border: 2px solid #464a54;
-  margin: 20px;
-  flex-direction: column-reverse;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
+  display: grid;
+  grid-gap: 20px;
 }
 
-.header-wrapper:hover {
+.header-wrapper-part-1:hover {
   background-color: #f3d9da;
+}
+
+.header-wrapper-part-1 {
+  // border: 2px solid black;
+  display: grid;
+  padding: 20px;
 }
 
 .home {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 33.3% 66.6%;
+  grid-gap: 20px;
   align-items: start;
+  padding: 20px;
+  justify-content: space-around;
 }
 
 .search-bar {
@@ -32,18 +28,25 @@
   // margin: -17px 25px;
 }
 
+.site-information {
+  // margin: 20px;
+  // border: 2px solid #464a54;
+  padding: 20px;
+}
+
 .movie-card-wrapper {
   padding: 20px;
   box-shadow: 2px 792px 266px #6944447d;
   flex: 1 1 152vw;
-  margin: 20px;
-  border: 2px solid #464a54;
+  // margin: 20px;
+  // border: 2px solid #464a54;
   display: grid;
-  grid-gap: 29px;
+  // grid-gap: 29px;
 }
 
-.movie-card-wrapper:hover {
+.site-information:hover {
   background-color: #ffffc46b;
+  // background-color: #181809;
 }
 
 .container {
@@ -52,15 +55,19 @@
   gap: 47px;
   // padding: 20px;
   // padding: 25px;
-  border: 0.1px solid #eeeeee;
+  // border: 0.1px solid #eeeeee;
   // margin: 27px auto;
   // border-radius: 2rem;
-  box-shadow: 0px 0px 200px #e9e9e96f;
+  // box-shadow: 0px 0px 200px #e9e9e96f;
 }
 
 .movie-container {
   opacity: 0;
   animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+aside {
+  color: #464a54;
 }
 
 @keyframes fadeIn {
@@ -113,14 +120,14 @@ img {
   // position: absolute;
   /* top: 50%; */
   // left: 50%;
-  margin-left: 69px;
-  transform: translate(-50%, -50%);
+  // margin-left: 69px;
+  // transform: translate(-50%, -50%);
   // height: 142px;
-  overflow: hidden;
+  // overflow: hidden;
   // margin-top: 111px;
   font-family: "Geist", sans-serif;
   font-size: 35px;
-  line-height: 40px;
+  // line-height: 40px;
   color: #4050b5;
   mix-blend-mode: plus-lighter;
 
@@ -128,8 +135,8 @@ img {
     font-weight: 100;
     overflow: hidden;
     height: 35px;
-    padding: 0 44px;
-    opacity: 0.3;
+    // padding: 0 44px;
+    // opacity: 0.3;
 
     &:before {
       content: "[";
