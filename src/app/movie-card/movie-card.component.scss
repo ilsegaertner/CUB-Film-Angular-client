@@ -108,6 +108,25 @@ img {
   font-weight: 100;
 }
 
+footer {
+  background-color: #4051b5;
+  border: 2px solid #4051b5;
+  padding: 20px;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  top: 89%;
+  margin-left: 95px;
+  position: fixed;
+}
+
+.socialmedia {
+  padding: 15px;
+  color: white;
+  position: fixed;
+  bottom: 0;
+}
+
 @media (max-width: 600px) {
   .home {
     grid-template-columns: 100%;
