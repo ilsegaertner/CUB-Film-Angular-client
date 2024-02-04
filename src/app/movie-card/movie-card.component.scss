@@ -49,6 +49,7 @@
   // margin: 20px;
   // border: 2px solid #464a54;
   display: grid;
+  margin-top: -33px;
   // grid-gap: 29px;
 }
 
@@ -127,6 +128,8 @@ img {
 .toggle-container {
   position: relative;
   padding: 20px;
+  display: grid;
+  justify-items: end;
 }
 
 .toggle-switch {

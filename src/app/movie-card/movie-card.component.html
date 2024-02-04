@@ -1,5 +1,15 @@
 <app-navgation-bar></app-navgation-bar>
-
+<div class="toggle-container">
+  <span style="font-size: 12px">left|right</span>
+  <input
+    type="checkbox"
+    id="toggle-switch"
+    class="toggle-switch"
+    [ngStyle]="toggleButton()"
+    (change)="onToggleSwitchChange($event)"
+  />
+  <label for="toggle-switch" class="toggle-label"></label>
+</div>
 <div class="home">
   <div class="header-wrapper" [ngClass]="{ 'order-2': toggleSwitchChecked }">
     <div class="header-wrapper-part-1">
@@ -29,17 +39,6 @@
         CUB Film Data allows you to load information about specific arthouse
         movies, directors, and genres.
       </aside>
-    </div>
-    <div class="toggle-container">
-      <span style="font-size: 12px">left|right</span>
-      <input
-        type="checkbox"
-        id="toggle-switch"
-        class="toggle-switch"
-        [ngStyle]="toggleButton()"
-        (change)="onToggleSwitchChange($event)"
-      />
-      <label for="toggle-switch" class="toggle-label"></label>
     </div>
   </div>
 
