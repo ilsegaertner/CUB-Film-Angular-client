@@ -20,6 +20,7 @@ export class MovieCardComponent {
   movies: any[] = [];
   favorites: { [movieId: string]: boolean } = {};
   searchTerm: string = '';
+  toggleSwitchChecked: boolean = false;
 
   constructor(
     public fetchApiData: UserRegistrationService,
@@ -130,5 +131,14 @@ export class MovieCardComponent {
         console.error('Error fetching movies:', error);
       }
     );
+  }
+
+  toggleButton(): { [key: string]: string } {
+    // Check the toggle switch state and apply styles accordingly
+    return this.toggleSwitchChecked ? { order: '2' } : {};
+  }
+
+  onToggleSwitchChange(event: Event) {
+    this.toggleSwitchChecked = (event.target as HTMLInputElement).checked;
   }
 }
