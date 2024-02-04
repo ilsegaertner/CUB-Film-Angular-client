@@ -140,12 +140,14 @@ export class MovieCardComponent {
         order: '2',
         color: '#4051b5',
         'footer-margin-left': '63vw',
+        'footer-border-color': '#f487f9',
       };
     } else {
       return {
         order: 'auto',
         color: '#f487f9',
         'footer-margin-left': '106px',
+        'footer-border-color': '#4051b5',
       };
     }
   }
