@@ -11,6 +11,7 @@
 
 .header-wrapper-part-1:hover {
   background-color: #f3d9da;
+  cursor: pointer;
 }
 
 .header-wrapper-part-1 {
@@ -52,6 +53,7 @@
 
 .site-information:hover {
   background-color: #ffffc46b;
+  cursor: pointer;
   // background-color: #181809;
 }
 
@@ -99,6 +101,10 @@ h1 {
   color: #f487f9;
   // font-size: 3rem;
   // mix-blend-mode: lighten;
+}
+
+h1.order-2 {
+  color: #4051b5; /* Color when order is 2 */
 }
 
 .mat-icon {
@@ -157,7 +163,7 @@ img {
 }
 
 footer {
-  background-color: #4051b5;
+  background-color: #f487f9;
   border: 2px solid #4051b5;
   padding: 27px;
   border-radius: 50%;
@@ -169,6 +175,12 @@ footer {
   margin-left: 106px;
   position: fixed;
   box-shadow: 0px 0px 4px rgba(81, 81, 81, 0.6509803922);
+  transition: margin-left 0.3s, background-color 0.3s;
+}
+
+.margin-left-63vw {
+  margin-left: 63vw;
+  background-color: #4051b5;
 }
 
 .footer-content {
@@ -207,6 +219,10 @@ footer {
   }
   .toggle-container {
     display: none;
+  }
+  footer.margin-left-63vw {
+    margin-left: 29vw;
+    background-color: #4051b5;
   }
 }
 

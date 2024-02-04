@@ -135,7 +135,19 @@ export class MovieCardComponent {
 
   toggleButton(): { [key: string]: string } {
     // Check the toggle switch state and apply styles accordingly
-    return this.toggleSwitchChecked ? { order: '2' } : {};
+    if (this.toggleSwitchChecked) {
+      return {
+        order: '2',
+        color: '#4051b5',
+        'footer-margin-left': '63vw',
+      };
+    } else {
+      return {
+        order: 'auto',
+        color: '#f487f9',
+        'footer-margin-left': '106px',
+      };
+    }
   }
 
   onToggleSwitchChange(event: Event) {
