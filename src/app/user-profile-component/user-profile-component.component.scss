@@ -26,6 +26,8 @@
 }
 .user-info:hover {
   background-color: #f487f9;
+  cursor: pointer;
+  transition: background-color 0.1s;
 }
 
 .user-info-content {
@@ -40,6 +42,8 @@
 .update-user-wrapper:hover {
   // padding: 18px 13px;
   background-color: #f3d9da;
+  cursor: pointer;
+  transition: background-color 0.1s;
 }
 
 .update-user-form {
@@ -63,6 +67,8 @@
 
 .delete-wrapper:hover {
   background-color: #ffffc46b;
+  cursor: pointer;
+  transition: background-color 0.1s;
 }
 
 .delete-button {

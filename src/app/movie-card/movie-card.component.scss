@@ -12,6 +12,7 @@
 .header-wrapper-part-1:hover {
   background-color: #f3d9da;
   cursor: pointer;
+  transition: background-color 1s;
 }
 
 .header-wrapper-part-1 {
@@ -54,6 +55,7 @@
 .site-information:hover {
   background-color: #ffffc46b;
   cursor: pointer;
+  transition: background-color 0.1s;
   // background-color: #181809;
 }
 
