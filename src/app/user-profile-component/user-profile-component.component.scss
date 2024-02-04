@@ -1,14 +1,31 @@
+// .profile-wrapper {
+//   padding: 111px 20px;
+//   display: grid;
+//   grid-gap: 108px;
+//   max-width: 693px;
+//   margin: 0 auto;
+//   font-size: 20px;
+// }
+
 .profile-wrapper {
-  padding: 111px 20px;
   display: grid;
-  grid-gap: 108px;
-  max-width: 693px;
-  margin: 0 auto;
-  font-size: 20px;
+  grid-template-columns: 33.3% 66.6%;
+  grid-gap: 20px;
+  align-items: start;
+  padding: 20px;
+  justify-content: space-around;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 100%; /* Switch to a single column */
+  }
 }
 
 .user-info {
-  padding: 31px 13px;
+  // padding: 31px 13px;
+  padding-bottom: 15px;
+}
+.user-info:hover {
+  background-color: #f487f9;
 }
 
 .user-info-content {
@@ -17,7 +34,12 @@
 }
 
 .update-user-wrapper {
-  padding: 18px 13px;
+  // padding: 18px 13px;
+}
+
+.update-user-wrapper:hover {
+  // padding: 18px 13px;
+  background-color: #f3d9da;
 }
 
 .update-user-form {
@@ -35,7 +57,12 @@
 .delete-wrapper {
   display: grid;
   grid-gap: 10px;
-  padding: 18px 13px;
+  // padding: 18px 13px;
+  padding-bottom: 10px;
+}
+
+.delete-wrapper:hover {
+  background-color: #ffffc46b;
 }
 
 .delete-button {
