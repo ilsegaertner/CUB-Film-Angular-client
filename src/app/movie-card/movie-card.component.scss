@@ -111,22 +111,23 @@ img {
 footer {
   background-color: #4051b5;
   border: 2px solid #4051b5;
-  padding: 22px;
+  padding: 27px;
   border-radius: 50%;
   width: 96px;
-  height: 82px;
-  top: 90%;
-  margin-left: 95px;
+  height: 96px;
+  /* top: 91%; */
+  bottom: 0;
+  margin-bottom: -83px;
+  margin-left: 94px;
   position: fixed;
-  box-shadow: 0px 0px 4px #515151a6;
+  box-shadow: 0px 0px 4px rgba(81, 81, 81, 0.6509803922);
 }
 
 .footer-content {
   display: grid;
-
   bottom: 0;
   margin-left: -48px;
-  margin-bottom: 39px;
+  margin-bottom: 62px;
   position: absolute;
 }
 
