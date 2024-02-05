@@ -1,6 +1,10 @@
 .header-wrapper {
   display: grid;
   grid-gap: 20px;
+
+  position: sticky;
+  top: 0; /* Stick to the top of the .home container */
+  z-index: 1;
 }
 
 .header-wrapper.order-2 {
@@ -27,6 +31,10 @@
   align-items: start;
   padding: 20px;
   justify-content: space-around;
+
+  height: 100vh; /* Set a fixed height for the scrollable container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative;
 }
 
 .search-bar {
