@@ -64,6 +64,13 @@
           },
           "defaultConfiguration": "production"
         },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "repo": "https://github.com/ilsegaertner/CUB-Film-Angular-client.git",
+            "baseHref": "/CUB-Film-Angular-client/"
+          }
+        },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
