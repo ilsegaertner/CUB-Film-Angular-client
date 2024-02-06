@@ -85,10 +85,20 @@ Apart from that I deepened my understanding of CSS/SCSS and the importance of co
 - SCSS
 - JavaScript
 
-### User Stories created prior
+### User Stories/User flow created prior
+
+Prior to code implementation, the following user stories were created to visualize the necessary interfaces and routes needed. These helped to understand the exact operations that needed to be written later and serve as visualization for other stakeholders.
 
 ##### User Story 1: As a user I want to be able to go to the Website and see the movies
 
+<img width="612" alt="Screenshot of User Story1" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/UserStory1.png?raw=true">
+
 ##### User Story 2: As a user, I want to be able to create a profile so I can see data about my favorite movies.
 
+<img width="612" alt="Screenshot of User Story2" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/UserStory2.png?raw=true">
+
 ##### User Story 3: As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.
+
+<img width="612" alt="Screenshot of User Story3" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/UserStory3.png?raw=true">
+
+https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/UserStory3.png?raw=true
