@@ -6,7 +6,7 @@
 
 ### Based on its existing server-side code (REST API and database) the single-page, responsive app displays several interface views that will handle data through the previously-defined REST API endpoints.
 
-### The project demonstrates mastery of full-stack JavaScript development, including APIs, web server frameworks, databases, business logic, authentication and data security.
+#### The project demonstrates mastery of full-stack JavaScript development, including APIs, web server frameworks, databases, business logic, authentication and data security.
 
 ### Overview
 
