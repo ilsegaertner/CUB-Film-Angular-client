@@ -84,3 +84,11 @@ Apart from that I deepened my understanding of CSS/SCSS and the importance of co
 - HTML
 - SCSS
 - JavaScript
+
+### User Stories created prior
+
+##### User Story 1: As a user I want to be able to go to the Website and see the movies
+
+##### User Story 2: As a user, I want to be able to create a profile so I can see data about my favorite movies.
+
+##### User Story 3: As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.
