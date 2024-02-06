@@ -2,7 +2,7 @@
 
 ## Client-side angular app for an arthouse movies database
 
-<img width="1434" alt="Bildschirmfoto 2023-10-12 um 15 12 35" src="https://github.com/ilsegaertner/CUB-film-data-client/assets/129660427/8ab8da62-1cdf-4a9a-90bf-a4b3e82618c3">
+<img width="1434" alt="Image of a screenshot of the app" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_08.png?raw=true">
 
 ### A complete web application (client-side and server-side) built using full-stack JavaScript technologies
 
