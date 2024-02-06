@@ -100,5 +100,3 @@ Prior to code implementation, the following user stories were created to visuali
 ##### User Story 3: As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.
 
 <img width="612" alt="Screenshot of User Story3" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/UserStory3.png?raw=true">
-
-https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/UserStory3.png?raw=true
