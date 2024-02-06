@@ -10,7 +10,7 @@
 
 ### Overview
 
-CUB Film Data is an app built as part of my CareerFoundry's Full-Stack-Web-Development-Course to demonstrate the mastery of full-stack JavaScript development inside the MERN stack.
+CUB Film Data is an Angular app built as part of my CareerFoundry's Full-Stack-Web-Development-Course to demonstrate the mastery of full-stack JavaScript development inside the MERN stack.
 
 The web app allows users to load information about specific arthouse movies, directors, and genres. Users are able to create an account, update their personal data, create a list of favorite movies or delete their account.
 
@@ -20,49 +20,51 @@ To visit App, click [here](https://cub-film-data.netlify.app/).
 
 ### Objective
 
-The objectiv was to build a client-side REACT app for the previously developed [server-side API, the databases and the business logic](https://github.com/ilsegaertner/CUB_Film_data).
+The objectiv was to build a client-side Angular app for the previously developed [server-side API, the databases and the business logic](https://github.com/ilsegaertner/CUB_Film_data).
 
 ### Approach
 
 **Client-Side:**
 
-The development of the clientside was achieved through the usage of the REACT framework.
-During the process the routes for the individual endpoints were determined, and the codelogic was created in different components, a main view, a navigation-bar, a movie view, a login- and signup view, a movie card, a profile view, and a favorites view:
+The development of the clientside was achieved through the usage of the Angular framework.
+During the process the routes for the individual endpoints were determined, and the codelogic was created in different components, a main view, a navigation-bar, a movie view, a login- and signup view, a movie card, a profile view and a logout logic:
 
-<img width="1423" alt="Bildschirmfoto 2023-10-12 um 15 20 21" src="https://github.com/ilsegaertner/CUB-film-data-client/assets/129660427/16345206-5441-46e2-8816-b081f9759657">
+<img width="1423" alt="Screenshot Fullscreen of the app" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_10.png?raw=true">
 
 ### Features
 
+#### Signup/Login
+
+- A welcome view where users will be able to either log in or register an account.
+
+<img width="823" alt="Screenshot of Signup/Login View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_02.png?raw=true">
+
 #### Main view
 
-- Returns ALL movies to the user (each movie item with an image, title, and description)
-- Filtering the list of movies with a “search” feature
-- Ability to select a movie for more details
-- Ability to log out
+- Displaying all movies of the database.
 - Ability to navigate to Profile view
+- Ability to log out
+- Filtering the list of movies with a “search” feature
+- Ability to select a movie for more details: Upon clicking on a particular movie, users will be taken to a single movie view:
 
 #### Single Movie view
 
-- Returns data (description, genre, director, image) about a single movie to the user
-- Allows users to add a movie to their list of favorites
+Additional movie details will be displayed. The single movie view will contain the following additional features via modals that appear when clicked on the button:
 
-#### Login view
+- Director View: Details about the director of that particular movie
+- Genre View: Details about that particular genre of the movie
+- Synopsis: Details about that particular Synopsis of the movie
 
-- Allows users to log in with a username and password
-
-#### Signup view
-
-- Allows new users to register (username, password, email, date of birth)
+<img width="612" alt="Screenshot of Director Modal View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_03.png?raw=true">
+<img width="612" alt="Screenshot of Genre Modal View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_01.png?raw=true">
 
 #### Profile view
 
 - Displays user registration details
 - Allows users to update their info (username, password, email, date of birth)
-- Displays favorite movies
-- Allows users to remove a movie from their list of favorites
-- Allows existing users to deregister
+- Allows existing users to delete their profile
 
-<img width="612" alt="Bildschirmfoto 2023-10-12 um 15 20 50" src="https://github.com/ilsegaertner/CUB-film-data-client/assets/129660427/ceed3376-9526-4538-a7b8-617257341bd6"><img width="612" alt="Bildschirmfoto 2023-10-12 um 15 21 05" src="https://github.com/ilsegaertner/CUB-film-data-client/assets/129660427/2a3e8616-76fb-47a5-8028-cdc38eb58172">
+<img width="612" alt="Screenshot of Profile View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_06.png?raw=true">
 
 ### Challenges
 
