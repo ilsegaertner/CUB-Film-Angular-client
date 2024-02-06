@@ -1,6 +1,6 @@
-# Name: CUB Film Angular (client-side app)
+# Name: CUB Film Data (Angular)
 
-## Client-side angular app for an arthouse movies database
+## A Client-side app for an arthouse movies database, built ith Typescript in Angular
 
 <img width="1434" alt="Image of a screenshot of the app" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_08.png?raw=true">
 
