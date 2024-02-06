@@ -12,11 +12,11 @@
 
 CUB Film Data is an Angular app built as part of my CareerFoundry's Full-Stack-Web-Development-Course to demonstrate the mastery of full-stack JavaScript development inside the MERN stack.
 
-The web app allows users to load information about specific arthouse movies, directors, and genres. Users are able to create an account, update their personal data, create a list of favorite movies or delete their account.
+The web app allows users to load information about specific arthouse movies, directors, and genres. Users are able to create an account, update their personal data or delete their account.
 
-The API is published on [GitHub](https://github.com/ilsegaertner/CUB_Film_data).
+The API is published on [GitHub](https://github.com/ilsegaertner/CUB-Film-Angular-client).
 
-To visit App, click [here](https://cub-film-data.netlify.app/).
+To visit App, click [here](https://ilsegaertner.github.io/CUB-Film-Angular-client/).
 
 ### Objective
 
