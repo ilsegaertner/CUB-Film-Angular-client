@@ -37,7 +37,7 @@ During the process the routes for the individual endpoints were determined, and 
 
 - A welcome view where users will be able to either log in or register an account.
 
-<img style="width: auto; max-height: 200px;" alt="Screenshot of Signup/Login View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_02.png?raw=true">
+<img width="823" alt="Screenshot of Signup/Login View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_02.png?raw=true">
 
 #### Main view
 
@@ -55,8 +55,8 @@ Additional movie details will be displayed. The single movie view will contain t
 - Genre View: Details about that particular genre of the movie
 - Synopsis: Details about that particular Synopsis of the movie
 
-<img width="612" alt="Screenshot of Director Modal View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_03.png?raw=true">
-<img width="612" alt="Screenshot of Genre Modal View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_01.png?raw=true">
+<img width="412" alt="Screenshot of Director Modal View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_03.png?raw=true">
+<img width="412" alt="Screenshot of Genre Modal View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_01.png?raw=true">
 
 #### Profile view
 
