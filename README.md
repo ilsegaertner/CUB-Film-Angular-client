@@ -4,7 +4,7 @@
 
 <img width="1434" alt="Image of a screenshot of the app" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_08.png?raw=true">
 
-### A complete web application (client-side and server-side) built using full-stack JavaScript technologies
+### The client-side, built in Angular for an application called CUB Film Data based on its existing server-side code (REST API and database).
 
 ### The project demonstrates mastery of full-stack JavaScript development, including APIs, web server frameworks, databases, business logic, authentication and data security
 
