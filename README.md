@@ -27,7 +27,7 @@ The objectiv was to build a client-side Angular app for the previously developed
 **Client-Side:**
 
 The development of the clientside was achieved through the usage of the Angular framework.
-During the process the routes for the individual endpoints were determined, and the codelogic was created in different components, a main view, a navigation-bar, a movie view, a login- and signup view, a movie card, a profile view and a logout logic:
+During the process the routes for the individual endpoints were determined, and the code logic was created in different components, a main view, a navigation-bar, a movie view, a login- and signup view, a movie card, a profile view and a logout link.
 
 <img width="1423" alt="Screenshot Fullscreen of the app" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_10.png?raw=true">
 
@@ -37,7 +37,7 @@ During the process the routes for the individual endpoints were determined, and 
 
 - A welcome view where users will be able to either log in or register an account.
 
-<img width="823" alt="Screenshot of Signup/Login View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_02.png?raw=true">
+<img width="823" height="200" alt="Screenshot of Signup/Login View" src="https://github.com/ilsegaertner/CUB-Film-Angular-client/blob/main/src/assets/CUB-Film-Angular-client_documentation/CUB-Film-Angular-client_documentation_02.png?raw=true">
 
 #### Main view
 
