@@ -73,7 +73,7 @@ Using the React concepts as basics I succeeded quicker in grasping the key conce
 I particularly liked the structured system and separation of services that the framework comes with.
 In general, I preferred the separation of tasks, the component structure and the data-binding and thought it to be more simple in contrast to state handling and complex prop drilling side effects in React.
 
-Apart from that I deepened my understanding of css and the importance of consistent stylings. While designing the app my approach was to define a font-size first and then define spacings in relation to that through rem. This helped me to better understand how to achieve consistency in relative design systems for different media.
+Apart from that I deepened my understanding of CSS/SCSS and the importance of consistent stylings. While designing the app my approach was to define a font-size first and then define spacings in relation to that through rem. This helped me to better understand how to achieve consistency in relative design systems for different media.
 
 ### Technologies used
 
