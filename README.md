@@ -67,17 +67,20 @@ Additional movie details will be displayed. The single movie view will contain t
 
 ### Challenges
 
-The implementation of the client-side for the app took me way longer than any other previous project, and especially longer than the backend programming of the app.
+I had a fun and straightforward development process with the Angular app.
+Using the React concepts as basics I succeeded quicker in grasping the key concepts of the Angular framework, despite its steep learning curve.
 
-As being new to Javascript and React relying on robust underrstanding of Javascript, I learned both (again) in the course of this project, going back and forth of old and new concepts. I was challenged with grasping the concepts of hooks, state and props.
+I particularly liked the structured system and separation of services that the framework comes with.
+In general, I preferred the separation of tasks, the component structure and the data-binding and thought it to be more simple in contrast to state handling and complex prop drilling side effects in React.
 
-As a conclusion it was not an easy, but very enriching task being aware of all the advantages that come in knowing how to creat REACT projects from scratch.
+Apart from that I deepened my understanding of css and the importance of consistent stylings. While designing the app my approach was to define a font-size first and then define spacings in relation to that through rem. This helped me to better understand how to achieve consistency in relative design systems for different media.
 
 ### Technologies used
 
-- JavaScript
-- REACT
+- Typescript
+- Angular Cli
 - MongoDB
 - Express
 - HTML
-- CSS
+- SCSS
+- JavaScript
