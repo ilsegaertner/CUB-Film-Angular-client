@@ -7,6 +7,11 @@ import { MatFormField } from '@angular/material/form-field';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { ChangeDetectorRef } from '@angular/core';
 
+/**
+ * @component UserProfileComponentComponent
+ * @description Component for user profile management.
+ * This component allows users to view, update, and delete their profile.
+ */
 @Component({
   selector: 'app-user-profile-component',
   templateUrl: './user-profile-component.component.html',
@@ -17,6 +22,15 @@ export class UserProfileComponentComponent implements OnInit {
   userData: any = {}; // Initialize userData object to store form values
   confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent> | undefined;
 
+  /**
+   * Constructor for UserProfileComponentComponent.
+   * @constructor
+   * @param {UserRegistrationService} fetchApiData - Service for making API calls related to user registration.
+   * @param {MatSnackBar} snackBar - Service for displaying notifications to the user.
+   * @param {Router} router - Angular router for navigation.
+   * @param {MatDialog} dialog - Angular Material dialog service for confirmation dialogs.
+   * @param {ChangeDetectorRef} cdRef - Change detector reference for detecting changes in the component.
+   */
   constructor(
     public fetchApiData: UserRegistrationService,
     private snackBar: MatSnackBar,
@@ -25,11 +39,19 @@ export class UserProfileComponentComponent implements OnInit {
     private cdRef: ChangeDetectorRef
   ) {}
 
+  /**
+   * Angular lifecycle hook called after component initialization.
+   */
   ngOnInit(): void {
     this.getUser();
     console.log('Initial user:', this.user);
   }
 
+  /**
+   * Function to fetch user data from local storage.
+   * If user data exists, it populates the component's user property and userData object with initial values.
+   * If not, it logs an error.
+   */
   getUser(): void {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -44,6 +66,10 @@ export class UserProfileComponentComponent implements OnInit {
     }
   }
 
+  /**
+   * Function to update user profile.
+   * It sends updated user data to the backend for updating the user's profile.
+   */
   updateProfile(): void {
     console.log('Before profile update:', this.user);
 
@@ -98,6 +124,10 @@ export class UserProfileComponentComponent implements OnInit {
       );
   }
 
+  /**
+   * Function to delete user profile.
+   * It sends a request to the backend to delete the user's profile.
+   */
   deleteProfile(): void {
     if (this.user && this.user.Username) {
       this.fetchApiData.deleteUser(this.user.Username).subscribe(
@@ -124,6 +154,11 @@ export class UserProfileComponentComponent implements OnInit {
     }
   }
 
+  /**
+   * Function to open a confirmation dialog before deleting the user profile.
+   * It opens a confirmation dialog asking the user if they're sure they want to delete their profile.
+   * If the user confirms, it calls the deleteProfile function.
+   */
   openConfirmationDialog(): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '300px',

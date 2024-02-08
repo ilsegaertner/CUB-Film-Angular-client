@@ -1,14 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-//You'll use this import to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
-
-// This import brings in the API calls I created
 import { UserRegistrationService } from '../fetch-api-data.service';
-
-// This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+/**
+ * @component UserRegistrationFormComponent
+ * @description Component for user registration form.
+ * This component handles user registration form inputs and sends them to the backend for registration.
+ */
 @Component({
   // telling Angular that the class below is a component
   selector: 'app-user-registration-form',
@@ -16,14 +15,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './user-registration-form.component.scss',
 })
 export class UserRegistrationFormComponent implements OnInit {
-  // onInit = lifecycle hook which allows you to run some code when the component is  first initialized
+  /**
+   * Input data for user registration.
+   */
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   /**
-   * Called when creating an instance of the class
-   * @param fetchApiData
-   * @param dialogRef
-   * @param snackBar
+   * Constructor for UserRegistrationFormComponent.
+   * @constructor
+   * @param {UserRegistrationService} fetchApiData - Service for making user registration API calls.
+   * @param {MatDialogRef<UserRegistrationFormComponent>} dialogRef - Reference to the dialog used for user registration form.
+   * @param {MatSnackBar} snackBar - Service for displaying notifications to the user.
    */
   constructor(
     public fetchApiData: UserRegistrationService,
@@ -31,14 +33,15 @@ export class UserRegistrationFormComponent implements OnInit {
     public snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {} // This method is called once the component has received all inputs (all its data-bound properties) from the calling component - the real life user
+  /**
+   * Angular lifecycle hook called after component initialization.
+   */
+  ngOnInit(): void {}
 
-  //This is the function responsible for sending the form inputs to the backend
   /**
    * Function for sending the form inputs to the backend to create a new user
    * @returns alert indicating a successful registration or an error
    */
-
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(
       (result) => {

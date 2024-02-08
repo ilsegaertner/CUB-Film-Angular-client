@@ -8,21 +8,34 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
-//Declaring the api url that will provide data for the client app
+//Api source
 const apiUrl = 'https://cub-film-data-dc72bcc7ff05.herokuapp.com/';
 
+/**
+ * Service for user registration operations.
+ * @injectable
+ */
 @Injectable({
   //injectable decorator. A decorator is a function that augments a piece of code - usually another function or a class
   providedIn: 'root',
 })
 export class UserRegistrationService {
-  // private: can only be accessed within the class where they are declared.
-  // public: accessible from outside the class.
-
   // Dependency Injection: Inject the HttpClient module to the constructor params
-  // This will provide HttpClient to the entire class, making it available via this.http
-  constructor(private http: HttpClient) {} // The namespace (here: private) is a way of initializing the instance with whatever is given as a parameter (here: http). http is of Type HttpClient
+  /**
+   * Constructor for UserRegistrationService.
+   * @constructor
+   * @param {HttpClient} http - Angular's HttpClient module for making HTTP requests.
+   */
+  constructor(
+    private http: HttpClient // This will provide HttpClient to the entire class, making it available via this.http
+  ) {}
 
+  /**
+   * @description Handle HTTP errors and log them.
+   * @param {HttpErrorResponse} error - HTTP error response.
+   * @returns {Observable<never>} - Error details.
+   * @private
+   */
   private handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
@@ -51,13 +64,22 @@ export class UserRegistrationService {
     return throwError('Something bad happened; please try again later.');
   }
 
-  // Non-typed response extraction
+  /**
+   * @description Extract non-typed response data from the API response.
+   * @param {HttpResponse<any>} res - API response.
+   * @returns {any} - Extracted response data.
+   * @private
+   */
   private extractResponseData(res: HttpResponse<any>): any {
     const body = res;
     return body || {};
   }
 
-  // Making the api call for the user registration endpoint
+  /**
+   * @description Make an API call for user registration.
+   * @param {any} userDetails - User details for registration.
+   * @returns {Observable<any>} - Observable for the API response.
+   */
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
@@ -65,7 +87,10 @@ export class UserRegistrationService {
       .pipe(catchError(this.handleError)); // The .pipe() function (from RxJS) is used to combine multiple functions into a single function.
   }
 
-  // Making the api call for the getMovies endpoint
+  /**
+   * @description Make an API call to retrieve all movies.
+   * @returns {Observable<any>} - Observable for the API response containing all movies.
+   */
   public getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -81,8 +106,11 @@ export class UserRegistrationService {
       );
   }
 
-  // added services logic to other endpoints for making an api call
-  // Api call - user login
+  /**
+   * @description Make an API call for user login.
+   * @param {any} userDetails - User details for login.
+   * @returns {Observable<string>} - Observable for the API response containing the user token.
+   */
   userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     const queryParams = `?Username=${userDetails.Username}&Password=${userDetails.Password}`;
@@ -96,7 +124,11 @@ export class UserRegistrationService {
       .pipe(catchError(this.handleError));
   }
 
-  // Api call - get movie
+  /**
+   * @description Make an API call to retrieve a single movie.
+   * @param {string} title - title of the movie to be retrieved.
+   * @returns {Observable<any>} - Observable for the API response containing the requested movie.
+   */
   getMovie(title: string): Observable<any> {
     // adding the public keyword is optional. they are public by default
     const token = localStorage.getItem('token');
@@ -113,7 +145,11 @@ export class UserRegistrationService {
       );
   }
 
-  // Api call - get director
+  /**
+   * @description Make an API call to retrieve a director by name.
+   * @param {string} name - Name of the director to be retrieved.
+   * @returns {Observable<any>} - Observable for the API response containing the requested director.
+   */
   getDirector(name: string): Observable<any> {
     // adding the public keyword is optional. they are public by default
     const token = localStorage.getItem('token');
@@ -130,7 +166,11 @@ export class UserRegistrationService {
       );
   }
 
-  // Api call - get genre
+  /**
+   * @description Make an API call to retrieve a genre by name.
+   * @param {string} name - Name of the genre to be retrieved.
+   * @returns {Observable<any>} - Observable for the API response containing the requested genre.
+   */
   getGenre(name: string): Observable<any> {
     // adding the public keyword is optional. they are public by default
     const token = localStorage.getItem('token');
@@ -147,7 +187,11 @@ export class UserRegistrationService {
       );
   }
 
-  // Api call - get user
+  /**
+   * @description Make an API call to retrieve a user by username.
+   * @param {string} username - Name of the user to be retrieved.
+   * @returns {Observable<any>} - Observable for the API response containing the requested genre.
+   */
   getUser(username: string): Observable<any> {
     // adding the public keyword is optional. they are public by default
     const token = localStorage.getItem('token');
@@ -171,7 +215,11 @@ export class UserRegistrationService {
       );
   }
 
-  // Api call - Get favourite movies for user
+  /**
+   * @description Make an API call to get all favourite movies of a user.
+   * @param {string} Username - Name of the user.
+   * @returns {Observable<any>} - Observable for the API response.
+   */
   getFavouriteMovies(Username: string): Observable<any> {
     // adding the public keyword is optional. they are public by default
     const token = localStorage.getItem('token');
@@ -188,9 +236,13 @@ export class UserRegistrationService {
       );
   }
 
-  // Api call - Add favourite movies to a user's list of favourites
+  /**
+   * @description Make an API call to add a favorite movie for a user.
+   * @param {string} Username - Name of the user.
+   * @param {string} movieID - ID of the movie to be added to favorites.
+   * @returns {Observable<any>} - Observable for the API response.
+   */
   addFavouriteMovie(Username: string, movieID: string): Observable<any> {
-    // adding the public keyword is optional. they are public by default
     const token = localStorage.getItem('token');
     return this.http
       .post(apiUrl + 'users/' + Username + '/movies/' + movieID, null, {
@@ -206,7 +258,12 @@ export class UserRegistrationService {
       );
   }
 
-  // Api call - Edit a user
+  /**
+   * @description Make an API call to update user information.
+   * @param {string} Username - Name of the user to be updated.
+   * @param {any} updatedDetails - New user information.
+   * @returns {Observable<any>} - Observable for the API response.
+   */
   editUser(Username: string, updatedDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -222,7 +279,11 @@ export class UserRegistrationService {
       );
   }
 
-  // Api call - Delete a user
+  /**
+   * @description Make an API call to delete a user.
+   * @param {string} Username - Name of the user to be deleted.
+   * @returns {Observable<any>} - Observable for the API response.
+   */
   deleteUser(Username: string): Observable<any> {
     console.log('Deleting user with username:', Username);
 
@@ -251,7 +312,12 @@ export class UserRegistrationService {
       );
   }
 
-  // Api call - Delete a movie from Favourites
+  /**
+   * @description Make an API call to delete a favorite movie for a user.
+   * @param {string} Username - Name of the user.
+   * @param {string} movieID - ID of the movie to be removed from favorites.
+   * @returns {Observable<any>} - Observable for the API response.
+   */
   deleteMovieFromFavourites(
     Username: string,
     movieID: string
