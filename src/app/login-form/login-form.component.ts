@@ -11,9 +11,10 @@ import { UserRegistrationService } from '../fetch-api-data.service';
  * This component handles user login and displays login form.
  */
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.scss',
+    selector: 'app-login-form',
+    templateUrl: './login-form.component.html',
+    styleUrl: './login-form.component.scss',
+    standalone: false
 })
 export class LoginFormComponent implements OnInit {
   @Input() userLoginData = { Username: '', Password: '' };

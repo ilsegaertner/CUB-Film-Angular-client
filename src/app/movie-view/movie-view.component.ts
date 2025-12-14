@@ -7,9 +7,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
  * This component is typically used within a dialog to show additional details when a movie is selected.
  */
 @Component({
-  selector: 'app-movie-view',
-  templateUrl: './movie-view.component.html',
-  styleUrl: './movie-view.component.scss',
+    selector: 'app-movie-view',
+    templateUrl: './movie-view.component.html',
+    styleUrl: './movie-view.component.scss',
+    standalone: false
 })
 export class MovieViewComponent {
   /**

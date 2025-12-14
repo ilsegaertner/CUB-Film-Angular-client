@@ -8,9 +8,10 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
  * This component receives genre data and displays it in a dialog.
  */
 @Component({
-  selector: 'app-genre-dialog',
-  templateUrl: './genre-dialog.component.html',
-  styleUrl: './genre-dialog.component.scss',
+    selector: 'app-genre-dialog',
+    templateUrl: './genre-dialog.component.html',
+    styleUrl: './genre-dialog.component.scss',
+    standalone: false
 })
 export class GenreDialogComponent {
   genre: any;

@@ -19,9 +19,10 @@ import { response } from 'express';
  * This component retrieves movie data from the backend and provides functionality to open dialogs for detailed movie information.
  */
 @Component({
-  selector: 'app-movie-card',
-  templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss'],
+    selector: 'app-movie-card',
+    templateUrl: './movie-card.component.html',
+    styleUrls: ['./movie-card.component.scss'],
+    standalone: false
 })
 export class MovieCardComponent {
   movies: any[] = [];

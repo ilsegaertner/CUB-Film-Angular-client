@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
  * This component provides navigation functionality and includes a logout feature.
  */
 @Component({
-  selector: 'app-navgation-bar',
-  templateUrl: './navgation-bar.component.html',
-  styleUrl: './navgation-bar.component.scss',
+    selector: 'app-navgation-bar',
+    templateUrl: './navgation-bar.component.html',
+    styleUrl: './navgation-bar.component.scss',
+    standalone: false
 })
 export class NavgationBarComponent {
   /**

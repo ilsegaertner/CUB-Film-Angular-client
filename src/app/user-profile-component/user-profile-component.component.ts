@@ -13,9 +13,10 @@ import { ChangeDetectorRef } from '@angular/core';
  * This component allows users to view, update, and delete their profile.
  */
 @Component({
-  selector: 'app-user-profile-component',
-  templateUrl: './user-profile-component.component.html',
-  styleUrls: ['./user-profile-component.component.scss'],
+    selector: 'app-user-profile-component',
+    templateUrl: './user-profile-component.component.html',
+    styleUrls: ['./user-profile-component.component.scss'],
+    standalone: false
 })
 export class UserProfileComponentComponent implements OnInit {
   user: any;

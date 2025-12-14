@@ -9,10 +9,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
  * This component handles user registration form inputs and sends them to the backend for registration.
  */
 @Component({
-  // telling Angular that the class below is a component
-  selector: 'app-user-registration-form',
-  templateUrl: './user-registration-form.component.html',
-  styleUrl: './user-registration-form.component.scss',
+    // telling Angular that the class below is a component
+    selector: 'app-user-registration-form',
+    templateUrl: './user-registration-form.component.html',
+    styleUrl: './user-registration-form.component.scss',
+    standalone: false
 })
 export class UserRegistrationFormComponent implements OnInit {
   /**

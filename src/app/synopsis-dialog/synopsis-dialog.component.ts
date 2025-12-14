@@ -7,9 +7,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
  * This component is responsible for displaying the synopsis of a movie in a dialog box.
  */
 @Component({
-  selector: 'app-synapsis-dialog',
-  templateUrl: './synopsis-dialog.component.html',
-  styleUrl: './synopsis-dialog.component.scss',
+    selector: 'app-synapsis-dialog',
+    templateUrl: './synopsis-dialog.component.html',
+    styleUrl: './synopsis-dialog.component.scss',
+    standalone: false
 })
 export class SynopsisDialogComponent {
   movie: any;

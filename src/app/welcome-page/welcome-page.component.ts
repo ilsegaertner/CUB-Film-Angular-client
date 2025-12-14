@@ -9,9 +9,10 @@ import { UserRegistrationFormComponent } from '../user-registration-form/user-re
  * This component displays options for user registration and login.
  */
 @Component({
-  selector: 'app-welcome-page',
-  templateUrl: './welcome-page.component.html',
-  styleUrl: './welcome-page.component.scss',
+    selector: 'app-welcome-page',
+    templateUrl: './welcome-page.component.html',
+    styleUrl: './welcome-page.component.scss',
+    standalone: false
 })
 export class WelcomePageComponent implements OnInit {
   /**

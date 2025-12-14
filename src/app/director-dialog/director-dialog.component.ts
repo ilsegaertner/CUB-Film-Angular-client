@@ -11,9 +11,10 @@ import {
  * This component receives director data and displays it in a dialog.
  */
 @Component({
-  selector: 'app-director-dialog',
-  templateUrl: './director-dialog.component.html',
-  styleUrl: './director-dialog.component.scss',
+    selector: 'app-director-dialog',
+    templateUrl: './director-dialog.component.html',
+    styleUrl: './director-dialog.component.scss',
+    standalone: false
 })
 export class DirectorDialogComponent {
   director: any;
