@@ -7,7 +7,7 @@
     class="toggle-switch"
     [ngStyle]="toggleButton()"
     (change)="onToggleSwitchChange($event)"
-  />
+    />
   <label for="toggle-switch" class="toggle-label"></label>
 </div>
 <div class="home">
@@ -51,76 +51,76 @@
           placeholder="Enter movie title"
           [(ngModel)]="searchTerm"
           (input)="onSearch()"
-        />
+          />
       </mat-form-field>
     </div>
     <div class="container">
-      <mat-card
-        *ngFor="let movie of movies; let i = index"
-        class="movie-container"
-      >
-        <mat-card-header
-          ><mat-card-title>
+      @for (movie of movies; track movie; let i = $index) {
+        <mat-card
+          class="movie-container"
+          >
+          <mat-card-header
+            ><mat-card-title>
             {{ movie.Title }}
           </mat-card-title>
           <mat-card-subtitle
             >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
-          >
-        </mat-card-header>
-
-        <img
-          src="{{ movie.ImagePath }}"
-          alt="{{ movie.Title }}"
-          (click)="openMovieView(movie)"
-          loading="lazy"
-        />
-        <mat-card-actions>
-          <a mat-button color="primary" (click)="openGenreDialog(movie)">
-            Genre
-          </a>
-          <a mat-button color="primary" (click)="openDirectorDialog(movie)"
-            >Director</a
-          >
-          <a mat-button color="primary" (click)="openSynopsisDialog(movie)">
-            Synopsis
-          </a>
-          <mat-icon (click)="toggleFavorite(movie._id, movie.Title)">
-            {{ isFavorite(movie._id) ? "favorite" : "favorite_border" }}
-          </mat-icon>
-        </mat-card-actions>
-      </mat-card>
+            >
+          </mat-card-header>
+          <img
+            src="{{ movie.ImagePath }}"
+            alt="{{ movie.Title }}"
+            (click)="openMovieView(movie)"
+            loading="lazy"
+            />
+          <mat-card-actions>
+            <a mat-button color="primary" (click)="openGenreDialog(movie)">
+              Genre
+            </a>
+            <a mat-button color="primary" (click)="openDirectorDialog(movie)"
+              >Director</a
+              >
+              <a mat-button color="primary" (click)="openSynopsisDialog(movie)">
+                Synopsis
+              </a>
+              <mat-icon (click)="toggleFavorite(movie._id, movie.Title)">
+                {{ isFavorite(movie._id) ? "favorite" : "favorite_border" }}
+              </mat-icon>
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
     </div>
   </div>
-</div>
 
-<footer
-  [ngStyle]="toggleButton()"
-  [class.margin-left-63vw]="toggleSwitchChecked"
->
-  <div class="footer-content">
-    <!-- <div class="socialmedia">Social Media</div> -->
-    <ul class="social-media-icons">
-      <li class="listitem">
-        <a href="www.twitter.com"
-          ><img
+  <footer
+    [ngStyle]="toggleButton()"
+    [class.margin-left-63vw]="toggleSwitchChecked"
+    >
+    <div class="footer-content">
+      <!-- <div class="socialmedia">Social Media</div> -->
+      <ul class="social-media-icons">
+        <li class="listitem">
+          <a href="www.twitter.com"
+            ><img
             src="../../assets/icons/icons8-linkedin-128.svg"
             width="30"
             height="30"
-        /></a>
-      </li>
-      <li class="listitem">
-        <a href="www.twitter.com"
-          ><img
+          /></a>
+        </li>
+        <li class="listitem">
+          <a href="www.twitter.com"
+            ><img
             src="../../assets/icons/github-mark-white.svg"
             width="30"
             height="30"
-        /></a>
-      </li>
-      <li class="listitem">
-        <a href="www.twitter.com"
-          ><img src="../../assets/icons/x_logo.svg" width="30" height="30"
-        /></a>
-      </li>
-    </ul>
-  </div>
-</footer>
+          /></a>
+        </li>
+        <li class="listitem">
+          <a href="www.twitter.com"
+            ><img src="../../assets/icons/x_logo.svg" width="30" height="30"
+          /></a>
+        </li>
+      </ul>
+    </div>
+  </footer>
