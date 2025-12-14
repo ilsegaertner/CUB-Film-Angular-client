@@ -4,7 +4,7 @@ import {
   BrowserModule,
   provideClientHydration,
 } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -51,63 +51,45 @@ const appRoutes: Routes = [
  * @module AppModule
  * @description Root module of the Angular application.
  */
-@NgModule({
-  declarations: [
-    /** @component AppComponent */
-    AppComponent,
-
-    /** @component UserRegistrationFormComponent */
-    UserRegistrationFormComponent,
-
-    /** @component LoginFormComponent */
-    LoginFormComponent,
-
-    /** @component MovieCardComponent */
-    MovieCardComponent,
-
-    /** @component WelcomePageComponent */
-    WelcomePageComponent,
-
-    /** @component UserProfileComponentComponent */
-    UserProfileComponentComponent,
-
-    /** @component NavgationBarComponent */
-    NavgationBarComponent,
-
-    /** @component MovieViewComponent */
-    MovieViewComponent,
-
-    /** @component GenreDialogComponent */
-    GenreDialogComponent,
-
-    /** @component DirectorDialogComponent */
-    DirectorDialogComponent,
-
-    /** @component SynopsisDialogComponent */
-    SynopsisDialogComponent,
-
-    /** @component ConfirmationDialogComponent */
-    ConfirmationDialogComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatSnackBarModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes),
-    MatIconModule,
-    MatToolbar,
-    MatToolbarRow,
-    MatFormField,
-  ],
-  providers: [provideClientHydration(), UserRegistrationService],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        /** @component AppComponent */
+        AppComponent,
+        /** @component UserRegistrationFormComponent */
+        UserRegistrationFormComponent,
+        /** @component LoginFormComponent */
+        LoginFormComponent,
+        /** @component MovieCardComponent */
+        MovieCardComponent,
+        /** @component WelcomePageComponent */
+        WelcomePageComponent,
+        /** @component UserProfileComponentComponent */
+        UserProfileComponentComponent,
+        /** @component NavgationBarComponent */
+        NavgationBarComponent,
+        /** @component MovieViewComponent */
+        MovieViewComponent,
+        /** @component GenreDialogComponent */
+        GenreDialogComponent,
+        /** @component DirectorDialogComponent */
+        DirectorDialogComponent,
+        /** @component SynopsisDialogComponent */
+        SynopsisDialogComponent,
+        /** @component ConfirmationDialogComponent */
+        ConfirmationDialogComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatSnackBarModule,
+        FormsModule,
+        RouterModule.forRoot(appRoutes),
+        MatIconModule,
+        MatToolbar,
+        MatToolbarRow,
+        MatFormField], providers: [provideClientHydration(), UserRegistrationService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
