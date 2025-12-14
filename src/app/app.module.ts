@@ -6,6 +6,7 @@ import {
 } from '@angular/platform-browser';
 import {
   provideHttpClient,
+  withFetch,
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -103,7 +104,7 @@ const appRoutes: Routes = [
     provideClientHydration(),
     UserRegistrationService,
     provideZoneChangeDetection(),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptorsFromDi(), withFetch()),
   ],
 })
 export class AppModule {}
