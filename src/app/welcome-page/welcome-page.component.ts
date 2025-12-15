@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginFormComponent } from '../login-form/login-form.component';
-import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
+import { LoginFormComponent } from '../login-signup/login-form/login-form.component';
+import { UserRegistrationFormComponent } from '../login-signup/user-registration-form/user-registration-form.component';
 import { MatButton } from '@angular/material/button';
 
 /**
@@ -22,7 +22,7 @@ export class WelcomePageComponent implements OnInit {
    * @constructor
    * @param {MatDialog} dialog - Angular Material dialog service.
    */
-  constructor(public dialog: MatDialog) {} // passing the Material dialog in the constructor as an argument so that it's available for use in this component
+  constructor(public dialog: MatDialog) {}
 
   /**
    * @description Angular lifecycle hook called after component initialization.
@@ -34,7 +34,6 @@ export class WelcomePageComponent implements OnInit {
    * This function is triggered when the signup button is clicked.
    */ openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
-      // Assigning the dialog width
       width: '280px',
     });
   }

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   MatCard,
@@ -18,7 +18,6 @@ import {
   templateUrl: './synopsis-dialog.component.html',
   styleUrl: './synopsis-dialog.component.scss',
   standalone: true,
-
   imports: [
     MatCard,
     MatCardHeader,
@@ -28,25 +27,11 @@ import {
   ],
 })
 export class SynopsisDialogComponent {
-  movie: any;
+  dialogRef = inject(MatDialogRef<SynopsisDialogComponent>);
+  data = inject(MAT_DIALOG_DATA);
 
-  /**
-   * Constructor for SynopsisDialogComponent.
-   * @constructor
-   * @param {MatDialogRef<SynopsisDialogComponent>} dialogRef - Reference to the dialog instance.
-   * @param {any} data - Data passed to the dialog.
-   */
-  constructor(
-    public dialogRef: MatDialogRef<SynopsisDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    this.movie = data.movie || null;
-  }
+  movie = this.data?.movie ?? null;
 
-  /**
-   * Function to handle closing the dialog.
-   * It closes the dialog when called.
-   */
   onNoClick(): void {
     this.dialogRef.close();
   }

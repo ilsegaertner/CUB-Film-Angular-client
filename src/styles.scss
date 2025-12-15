@@ -1,14 +1,6 @@
 @use "@angular/material" as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
 $CUB-Film-Angular-client-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
 $CUB-Film-Angular-client-accent: mat.m2-define-palette(
   mat.$m2-pink-palette,
@@ -17,11 +9,8 @@ $CUB-Film-Angular-client-accent: mat.m2-define-palette(
   A400
 );
 
-// The warn palette is optional (defaults to red).
 $CUB-Film-Angular-client-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
 $CUB-Film-Angular-client-theme: mat.m2-define-light-theme(
   (
     color: (
@@ -32,12 +21,7 @@ $CUB-Film-Angular-client-theme: mat.m2-define-light-theme(
   )
 );
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($CUB-Film-Angular-client-theme);
-
-/* You can add global styles to this file, and also import other style files */
 
 html,
 body {
@@ -45,10 +29,7 @@ body {
 }
 body {
   margin: 0px auto;
-  // font-family: Roboto, "Helvetica Neue", sans-serif;
   font-family: Geist, sans-serif;
-  // background-size: cover;
-  // background-repeat: no-repeat;
   position: relative;
 }
 
@@ -59,11 +40,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Place the pseudo-element behind the content */
+  z-index: -1;
   background-image: url("../src/assets/icons/photo-1581250505145-d35ac1eab29d.avif");
   background-size: cover;
   background-repeat: no-repeat;
-  filter: blur(3px); /* Adjust the blur value as needed */
+  filter: blur(3px);
   opacity: 0.9;
 }
 

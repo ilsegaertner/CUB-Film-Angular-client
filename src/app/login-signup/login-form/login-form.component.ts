@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, input, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
-import { UserRegistrationService } from '../fetch-api-data.service';
+import { UserRegistrationService } from '../../fetch-api-data.service';
 import {
   MatCard,
   MatCardHeader,
@@ -39,37 +39,17 @@ import { MatButton } from '@angular/material/button';
     MatButton,
   ],
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent {
   @Input() userLoginData = { Username: '', Password: '' };
 
-  /**
-   * Constructor for LoginFormComponent.
-   * @constructor
-   * @param {UserRegistrationService} fetchApiData - Service for user registration API calls.
-   * @param {MatDialogRef<LoginFormComponent>} dialogRef - Reference to the Material dialog for the login form.
-   * @param {MatSnackBar} snackBar - Material snack bar service for displaying notifications.
-   * @param {Router} router - Router service for navigation.
-   */
-  constructor(
-    public fetchApiData: UserRegistrationService,
-    public dialogRef: MatDialogRef<LoginFormComponent>,
-    public snackBar: MatSnackBar,
-    private router: Router
-  ) {}
+  fetchApiData = inject(UserRegistrationService);
+  dialogRef = inject(MatDialogRef<LoginFormComponent>);
+  snackBar = inject(MatSnackBar);
+  private readonly router = inject(Router);
 
-  /**
-   * Angular lifecycle hook called after component initialization.
-   */
-  ngOnInit(): void {}
-
-  /**
-   * Function responsible for sending the form inputs to the backend for user login.
-   * This function is triggered when the user submits the login form.
-   */
   public loginUser(): void {
     this.fetchApiData.userLogin(this.userLoginData).subscribe(
       (result) => {
-        // Successfully login done
         localStorage.setItem('user', JSON.stringify(result.user));
         localStorage.setItem('token', result.token);
         this.dialogRef.close();

@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UserRegistrationService } from '../fetch-api-data.service';
+import { UserRegistrationService } from '../../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   MatCard,
@@ -20,7 +20,6 @@ import { MatButton } from '@angular/material/button';
  * This component handles user registration form inputs and sends them to the backend for registration.
  */
 @Component({
-  // telling Angular that the class below is a component
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',
   styleUrl: './user-registration-form.component.scss',
@@ -37,10 +36,7 @@ import { MatButton } from '@angular/material/button';
     MatButton,
   ],
 })
-export class UserRegistrationFormComponent implements OnInit {
-  /**
-   * Input data for user registration.
-   */
+export class UserRegistrationFormComponent {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   /**
@@ -50,16 +46,12 @@ export class UserRegistrationFormComponent implements OnInit {
    * @param {MatDialogRef<UserRegistrationFormComponent>} dialogRef - Reference to the dialog used for user registration form.
    * @param {MatSnackBar} snackBar - Service for displaying notifications to the user.
    */
+
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     public snackBar: MatSnackBar
   ) {}
-
-  /**
-   * Angular lifecycle hook called after component initialization.
-   */
-  ngOnInit(): void {}
 
   /**
    * Function for sending the form inputs to the backend to create a new user

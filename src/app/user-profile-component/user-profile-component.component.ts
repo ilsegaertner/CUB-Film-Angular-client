@@ -56,7 +56,7 @@ export class UserProfileComponentComponent implements OnInit {
   user: any;
   userData: any = {}; // Initialize userData object to store form values
   confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent> | undefined;
-
+ 
   /**
    * Constructor for UserProfileComponentComponent.
    * @constructor
@@ -118,8 +118,6 @@ export class UserProfileComponentComponent implements OnInit {
           Email: this.userData.email,
           Birthday: this.userData.birthday,
         }
-
-        // this.userData
       )
       .subscribe(
         (response) => {
