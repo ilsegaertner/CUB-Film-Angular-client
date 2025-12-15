@@ -4,6 +4,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 import { UserRegistrationService } from '../fetch-api-data.service';
+import {
+  MatCard,
+  MatCardHeader,
+  MatCardTitle,
+  MatCardContent,
+  MatCardActions,
+} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 /**
  * @component LoginFormComponent
@@ -11,10 +22,22 @@ import { UserRegistrationService } from '../fetch-api-data.service';
  * This component handles user login and displays login form.
  */
 @Component({
-    selector: 'app-login-form',
-    templateUrl: './login-form.component.html',
-    styleUrl: './login-form.component.scss',
-    standalone: false
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrl: './login-form.component.scss',
+  standalone: true,
+
+  imports: [
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    FormsModule,
+    MatFormField,
+    MatInput,
+    MatCardActions,
+    MatButton,
+  ],
 })
 export class LoginFormComponent implements OnInit {
   @Input() userLoginData = { Username: '', Password: '' };

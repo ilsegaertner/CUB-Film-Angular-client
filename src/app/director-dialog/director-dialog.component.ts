@@ -4,6 +4,13 @@ import {
   MAT_DIALOG_DATA,
   MatDialog,
 } from '@angular/material/dialog';
+import {
+  MatCard,
+  MatCardHeader,
+  MatCardTitle,
+  MatCardContent,
+  MatCardSubtitle,
+} from '@angular/material/card';
 
 /**
  * @component DirectorDialogComponent
@@ -11,10 +18,18 @@ import {
  * This component receives director data and displays it in a dialog.
  */
 @Component({
-    selector: 'app-director-dialog',
-    templateUrl: './director-dialog.component.html',
-    styleUrl: './director-dialog.component.scss',
-    standalone: false
+  selector: 'app-director-dialog',
+  templateUrl: './director-dialog.component.html',
+  styleUrl: './director-dialog.component.scss',
+  standalone: true,
+
+  imports: [
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    MatCardSubtitle,
+  ],
 })
 export class DirectorDialogComponent {
   director: any;

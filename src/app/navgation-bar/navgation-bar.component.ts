@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
 
 /**
  * @component NavgationBarComponent
@@ -7,10 +8,11 @@ import { Router } from '@angular/router';
  * This component provides navigation functionality and includes a logout feature.
  */
 @Component({
-    selector: 'app-navgation-bar',
-    templateUrl: './navgation-bar.component.html',
-    styleUrl: './navgation-bar.component.scss',
-    standalone: false
+  selector: 'app-navgation-bar',
+  templateUrl: './navgation-bar.component.html',
+  styleUrl: './navgation-bar.component.scss',
+  standalone: true,
+  imports: [MatToolbar, MatToolbarRow, RouterLink, RouterLinkActive],
 })
 export class NavgationBarComponent {
   /**

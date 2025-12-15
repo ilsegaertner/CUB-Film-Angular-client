@@ -1,6 +1,13 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
+import {
+  MatCard,
+  MatCardHeader,
+  MatCardTitle,
+  MatCardContent,
+  MatCardSubtitle,
+} from '@angular/material/card';
 
 /**
  * @component GenreDialogComponent
@@ -8,10 +15,18 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
  * This component receives genre data and displays it in a dialog.
  */
 @Component({
-    selector: 'app-genre-dialog',
-    templateUrl: './genre-dialog.component.html',
-    styleUrl: './genre-dialog.component.scss',
-    standalone: false
+  selector: 'app-genre-dialog',
+  templateUrl: './genre-dialog.component.html',
+  styleUrl: './genre-dialog.component.scss',
+  standalone: true,
+
+  imports: [
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    MatCardSubtitle,
+  ],
 })
 export class GenreDialogComponent {
   genre: any;

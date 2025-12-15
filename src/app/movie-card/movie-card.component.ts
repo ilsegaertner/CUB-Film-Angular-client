@@ -10,6 +10,20 @@ import { DirectorDialogComponent } from '../director-dialog/director-dialog.comp
 import { SynopsisDialogComponent } from '../synopsis-dialog/synopsis-dialog.component';
 
 import { response } from 'express';
+import { NavgationBarComponent } from '../navgation-bar/navgation-bar.component';
+import { NgStyle, NgClass } from '@angular/common';
+import { MatFormField } from '@angular/material/form-field';
+import { MatLabel, MatInput } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import {
+  MatCard,
+  MatCardHeader,
+  MatCardTitle,
+  MatCardSubtitle,
+  MatCardActions,
+} from '@angular/material/card';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 // import { FormsModule } from '@angular/forms';
 // import { MatInputModule, MatFormFieldModule } from '@angular/material';
 
@@ -19,10 +33,27 @@ import { response } from 'express';
  * This component retrieves movie data from the backend and provides functionality to open dialogs for detailed movie information.
  */
 @Component({
-    selector: 'app-movie-card',
-    templateUrl: './movie-card.component.html',
-    styleUrls: ['./movie-card.component.scss'],
-    standalone: false
+  selector: 'app-movie-card',
+  templateUrl: './movie-card.component.html',
+  styleUrls: ['./movie-card.component.scss'],
+  standalone: true,
+
+  imports: [
+    NavgationBarComponent,
+    NgStyle,
+    NgClass,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    FormsModule,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatCardActions,
+    MatButton,
+    MatIcon,
+  ],
 })
 export class MovieCardComponent {
   movies: any[] = [];

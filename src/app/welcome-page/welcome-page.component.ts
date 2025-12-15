@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
+import { MatButton } from '@angular/material/button';
 
 /**
  * @component WelcomePageComponent
@@ -9,10 +10,11 @@ import { UserRegistrationFormComponent } from '../user-registration-form/user-re
  * This component displays options for user registration and login.
  */
 @Component({
-    selector: 'app-welcome-page',
-    templateUrl: './welcome-page.component.html',
-    styleUrl: './welcome-page.component.scss',
-    standalone: false
+  selector: 'app-welcome-page',
+  templateUrl: './welcome-page.component.html',
+  styleUrl: './welcome-page.component.scss',
+  standalone: true,
+  imports: [MatButton],
 })
 export class WelcomePageComponent implements OnInit {
   /**

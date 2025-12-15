@@ -2,10 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MatDialogContent,
+} from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { ChangeDetectorRef } from '@angular/core';
+import { NavgationBarComponent } from '../navgation-bar/navgation-bar.component';
+import {
+  MatCard,
+  MatCardHeader,
+  MatCardTitle,
+  MatCardContent,
+  MatCardSubtitle,
+  MatCardActions,
+} from '@angular/material/card';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { FormsModule } from '@angular/forms';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { DatePipe } from '@angular/common';
 
 /**
  * @component UserProfileComponentComponent
@@ -13,10 +31,26 @@ import { ChangeDetectorRef } from '@angular/core';
  * This component allows users to view, update, and delete their profile.
  */
 @Component({
-    selector: 'app-user-profile-component',
-    templateUrl: './user-profile-component.component.html',
-    styleUrls: ['./user-profile-component.component.scss'],
-    standalone: false
+  selector: 'app-user-profile-component',
+  templateUrl: './user-profile-component.component.html',
+  standalone: true,
+  styleUrls: ['./user-profile-component.component.scss'],
+  imports: [
+    NavgationBarComponent,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    MatCardSubtitle,
+    CdkScrollable,
+    MatDialogContent,
+    FormsModule,
+    MatFormField,
+    MatInput,
+    MatCardActions,
+    MatButton,
+    DatePipe,
+  ],
 })
 export class UserProfileComponentComponent implements OnInit {
   user: any;

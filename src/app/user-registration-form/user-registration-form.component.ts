@@ -2,6 +2,17 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  MatCard,
+  MatCardHeader,
+  MatCardTitle,
+  MatCardContent,
+  MatCardActions,
+} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 /**
  * @component UserRegistrationFormComponent
@@ -9,11 +20,22 @@ import { MatSnackBar } from '@angular/material/snack-bar';
  * This component handles user registration form inputs and sends them to the backend for registration.
  */
 @Component({
-    // telling Angular that the class below is a component
-    selector: 'app-user-registration-form',
-    templateUrl: './user-registration-form.component.html',
-    styleUrl: './user-registration-form.component.scss',
-    standalone: false
+  // telling Angular that the class below is a component
+  selector: 'app-user-registration-form',
+  templateUrl: './user-registration-form.component.html',
+  styleUrl: './user-registration-form.component.scss',
+  standalone: true,
+  imports: [
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    FormsModule,
+    MatFormField,
+    MatInput,
+    MatCardActions,
+    MatButton,
+  ],
 })
 export class UserRegistrationFormComponent implements OnInit {
   /**

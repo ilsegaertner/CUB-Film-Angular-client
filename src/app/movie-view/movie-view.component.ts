@@ -1,5 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatCard,
+  MatCardHeader,
+  MatCardTitle,
+  MatCardSubtitle,
+  MatCardContent,
+} from '@angular/material/card';
 
 /**
  * @component MovieViewComponent
@@ -7,10 +14,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
  * This component is typically used within a dialog to show additional details when a movie is selected.
  */
 @Component({
-    selector: 'app-movie-view',
-    templateUrl: './movie-view.component.html',
-    styleUrl: './movie-view.component.scss',
-    standalone: false
+  selector: 'app-movie-view',
+  templateUrl: './movie-view.component.html',
+  styleUrl: './movie-view.component.scss',
+  standalone: true,
+
+  imports: [
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatCardContent,
+  ],
 })
 export class MovieViewComponent {
   /**
