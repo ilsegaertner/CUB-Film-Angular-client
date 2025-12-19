@@ -1,21 +1,42 @@
-<div class="main-page-wrapper">
+<div class="welcome-wrapper">
+  <div>
+    <h1 class="text-4xl tracking-widest">
+      <span class="font-bold">CUB</span>-Film-Data
+    </h1>
+
+    <h2>
+      Discover auteur cinema through a curated selection of films, directors,
+      and movements.
+    </h2>
+    <p class="mt-2 text-sm opacity-80">
+      Portfolio demo: authentication + RESTful CRUD + searchable resources.
+    </p>
+    <ul class="mt-6 space-y-2 text-sm">
+      <li>Browse a curated film selection</li>
+      <li>Search by title, director, or genre</li>
+      <li>Manage your profile details securely</li>
+    </ul>
+  </div>
   <div class="login-signup-form">
-    <h1>Welcome to CUB-Film-Data!</h1>
-    <button
-      mat-raised-button
-      (click)="openUserRegistrationDialog()"
-      style="margin-right: 10px"
-      color="primary"
-    >
-      Sign Up
-    </button>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="openLoginDialog()"
-      style="margin-right: 10px"
-    >
-      Login
-    </button>
+    <div class="inner-wrapper">
+      <p class="font-medium">New here?</p>
+      <p>Create a demo account in seconds</p>
+      <button
+        mat-raised-button
+        (click)="openUserRegistrationDialog()"
+        color="primary"
+      >
+        Create account
+      </button>
+      <p>Takes ~30 seconds. You can delete your account anytime.</p>
+    </div>
+
+    <div class="inner-wrapper">
+      <p>Already a member?</p>
+      <p class="text-sm opacity-80">Sign in to continue exploring.</p>
+      <button mat-raised-button color="secondary" (click)="openLoginDialog()">
+        Sign in
+      </button>
+    </div>
   </div>
 </div>

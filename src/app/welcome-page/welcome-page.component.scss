@@ -1,24 +1,48 @@
-.main-page-wrapper {
-  padding: 20px;
-  position: relative;
-  margin: 0 auto;
-  width: 74%;
-  max-width: 482px;
-  top: 27%;
-  border-radius: 35px;
+@reference "tailwindcss";
+
+:host {
+  color: var(--text-main);
+}
+
+.welcome-wrapper {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-inline: 4rem;
 }
 
 .login-signup-form {
-  padding: 20px;
-  display: grid;
-  grid-gap: 29px;
-  position: relative;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 25rem;
+  min-width: 15rem;
+  gap: 3rem;
+  padding: 0rem 1.5rem;
+  background: var(--background-main-gradient);
+}
+
+.login-signup-form {
+  @apply rounded-2xl shadow-md;
+}
+
+.inner-wrapper {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.inner-wrapper p {
+  margin: 0 auto;
 }
 
 h1 {
   font-weight: 100;
   text-shadow: 0 0 3px #777777a6;
+  color: var(--background-main);
 }
 
 mat-mdc-card-title {

@@ -103,7 +103,7 @@ export class MovieCardComponent {
    */
   openMovieView(movie: any): void {
     this.dialog.open(MovieViewComponent, {
-      width: '380px',
+      width: '40rem',
       data: { movie: movie },
     });
   }
@@ -116,7 +116,7 @@ export class MovieCardComponent {
     this.fetchApiData.getGenre(movie.Genre.Name).subscribe(
       (result) => {
         this.dialog.open(GenreDialogComponent, {
-          width: '380px',
+          width: '40rem',
           data: { genre: result },
         });
       },
@@ -134,7 +134,7 @@ export class MovieCardComponent {
     this.fetchApiData.getDirector(movie.Director.Name).subscribe(
       (result) => {
         this.dialog.open(DirectorDialogComponent, {
-          width: '380px',
+          width: '40rem',
           data: { director: result },
         });
       },
@@ -150,7 +150,7 @@ export class MovieCardComponent {
    */
   openSynopsisDialog(movie: any): void {
     this.dialog.open(SynopsisDialogComponent, {
-      width: '380px',
+      width: '40rem',
       data: { movie: movie },
     });
   }

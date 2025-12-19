@@ -1,11 +1,10 @@
 .profile-wrapper {
   display: grid;
-  grid-template-columns: 33.3% 66.6%;
-  grid-gap: 20px;
+  grid-template-columns: 1fr 2fr;
   align-items: start;
-  padding: 33px;
-  justify-content: space-around;
-
+  padding: 4rem;
+  gap: 2rem;
+  background-color: var(--background-alt);
   @media (max-width: 600px) {
     grid-template-columns: 100%; /* Switch to a single column */
   }
@@ -13,16 +12,11 @@
 
 .user-info {
   padding-bottom: 15px;
-  margin: 20px;
 }
 
 .user-info-content {
   display: grid;
   grid-gap: 4px;
-}
-
-.update-user-wrapper {
-  margin: 20px;
 }
 
 .update-user-form {
@@ -38,10 +32,7 @@
 }
 
 .delete-wrapper {
-  display: grid;
-  grid-gap: 10px;
   padding-bottom: 10px;
-  margin: 20px;
 }
 
 .delete-button {

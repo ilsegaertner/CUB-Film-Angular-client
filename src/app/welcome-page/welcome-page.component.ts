@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginFormComponent } from '../login-signup/login-form/login-form.component';
 import { UserRegistrationFormComponent } from '../login-signup/user-registration-form/user-registration-form.component';
@@ -16,18 +16,8 @@ import { MatButton } from '@angular/material/button';
   standalone: true,
   imports: [MatButton],
 })
-export class WelcomePageComponent implements OnInit {
-  /**
-   * Constructor for WelcomePageComponent.
-   * @constructor
-   * @param {MatDialog} dialog - Angular Material dialog service.
-   */
-  constructor(public dialog: MatDialog) {}
-
-  /**
-   * @description Angular lifecycle hook called after component initialization.
-   */
-  ngOnInit(): void {}
+export class WelcomePageComponent {
+  dialog = inject(MatDialog);
 
   /**
    * @description Open a dialog for user registration.

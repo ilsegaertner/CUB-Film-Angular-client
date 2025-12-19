@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { catchError, finalize, map, tap } from 'rxjs/operators';
 import {
   HttpHeaders,
@@ -20,15 +20,7 @@ const apiUrl = 'https://cub-film-data-dc72bcc7ff05.herokuapp.com/';
   providedIn: 'root',
 })
 export class UserRegistrationService {
-  // Dependency Injection: Inject the HttpClient module to the constructor params
-  /**
-   * Constructor for UserRegistrationService.
-   * @constructor
-   * @param {HttpClient} http - Angular's HttpClient module for making HTTP requests.
-   */
-  constructor(
-    private http: HttpClient // This will provide HttpClient to the entire class, making it available via this.http
-  ) {}
+  http = inject(HttpClient);
 
   /**
    * @description Handle HTTP errors and log them.
@@ -81,7 +73,6 @@ export class UserRegistrationService {
    * @returns {Observable<any>} - Observable for the API response.
    */
   public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
     return this.http
       .post(apiUrl + 'users', userDetails)
       .pipe(catchError(this.handleError)); // The .pipe() function (from RxJS) is used to combine multiple functions into a single function.

@@ -56,7 +56,7 @@ export class UserProfileComponentComponent implements OnInit {
   user: any;
   userData: any = {}; // Initialize userData object to store form values
   confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent> | undefined;
- 
+
   /**
    * Constructor for UserProfileComponentComponent.
    * @constructor
@@ -79,7 +79,6 @@ export class UserProfileComponentComponent implements OnInit {
    */
   ngOnInit(): void {
     this.getUser();
-    console.log('Initial user:', this.user);
   }
 
   /**
@@ -106,19 +105,14 @@ export class UserProfileComponentComponent implements OnInit {
    * It sends updated user data to the backend for updating the user's profile.
    */
   updateProfile(): void {
-    console.log('Before profile update:', this.user);
-
     // Call service method to update user data
     this.fetchApiData
-      .editUser(
-        this.user.Username,
-        {
-          Username: this.userData.username,
-          Password: this.userData.password,
-          Email: this.userData.email,
-          Birthday: this.userData.birthday,
-        }
-      )
+      .editUser(this.user.Username, {
+        Username: this.userData.username,
+        Password: this.userData.password,
+        Email: this.userData.email,
+        Birthday: this.userData.birthday,
+      })
       .subscribe(
         (response) => {
           // Handle successful update
