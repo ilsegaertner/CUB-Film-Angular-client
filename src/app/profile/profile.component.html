@@ -13,10 +13,12 @@
       </mat-card-header>
       <br />
       <mat-card-content class="user-info-content"
-        ><mat-card-subtitle> Username: {{ user.Username }}</mat-card-subtitle>
-        <mat-card-subtitle> Email: {{ user.Email }}</mat-card-subtitle>
+        ><mat-card-subtitle>
+          Username: {{ userData.username }}</mat-card-subtitle
+        >
+        <mat-card-subtitle> Email: {{ userData.email }}</mat-card-subtitle>
         <mat-card-subtitle>
-          Birthday: {{ user.Birthday | date }}</mat-card-subtitle
+          Birthday: {{ userData.birthday | date }}</mat-card-subtitle
         >
         <mat-card-subtitle>
           Member since: @if(user.createdAt){
