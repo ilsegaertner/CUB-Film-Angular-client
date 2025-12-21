@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { NavgationBarComponent } from "app/navgation-bar/navgation-bar.component";
+import { NavigationBarComponent } from 'app/navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-about',
-  imports: [NavgationBarComponent],
+  imports: [NavigationBarComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
-export class AboutComponent {
-
-}
+export class AboutComponent {}

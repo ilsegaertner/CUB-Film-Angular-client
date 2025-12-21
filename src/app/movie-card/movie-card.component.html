@@ -1,4 +1,4 @@
-<app-navgation-bar></app-navgation-bar>
+<app-navigation-bar></app-navigation-bar>
 <div class="home-wrapper">
   <div class="toggle-container">
     <span>left|right</span>
@@ -67,10 +67,13 @@
         <mat-card class="movie-container">
           <mat-card-header
             ><mat-card-title>
-              {{ movie.Title }}
+              <span class="title-pretext"> {{ movie.Title }} </span>
             </mat-card-title>
             <mat-card-subtitle
-              >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
+              ><span class="italic-pretext"
+                >Directed by:
+                <span class="bold-pretext">{{ movie.Director.Name }}</span>
+              </span></mat-card-subtitle
             >
           </mat-card-header>
           @if (movie.ImagePath) {<img

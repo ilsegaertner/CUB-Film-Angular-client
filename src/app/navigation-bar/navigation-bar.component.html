@@ -1,0 +1,18 @@
+<div class="navigation-wrapper">
+  <mat-toolbar class="nav-ul">
+    <mat-toolbar-row class="li-item">
+      <a routerLink="/movies" routerLinkActive="active-link">CUB Film Movies</a>
+    </mat-toolbar-row>
+    <div>
+      <mat-toolbar-row class="li-item">
+        <a routerLink="/profile" routerLinkActive="active-link">Profile</a>
+      </mat-toolbar-row>
+      <mat-toolbar-row class="li-item">
+        <a routerLink="/about" routerLinkActive="active-link">About</a>
+      </mat-toolbar-row>
+      <mat-toolbar-row class="li-item">
+        <a (click)="logout()">Logout</a>
+      </mat-toolbar-row>
+    </div>
+  </mat-toolbar>
+</div>

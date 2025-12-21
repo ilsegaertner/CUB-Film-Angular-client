@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import {
 import { MatFormField } from '@angular/material/form-field';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { ChangeDetectorRef } from '@angular/core';
-import { NavgationBarComponent } from '../navgation-bar/navgation-bar.component';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import {
   MatCard,
   MatCardHeader,
@@ -24,6 +24,23 @@ import { FormsModule } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { DatePipe } from '@angular/common';
+import { Movie } from 'app/movie-card/movie-card.component';
+
+interface User {
+  Birthday: string;
+  Email: string;
+  Username: string;
+  FavouriteMovies?: Movie['_id'][];
+  _id: string;
+  createdAt?: string;
+  lastLoginAt?: string;
+}
+interface UserData {
+  birthday?: User['Birthday'];
+  email?: User['Email'];
+  username?: User['Username'];
+  password?: string;
+}
 
 /**
  * @component UserProfileComponentComponent
@@ -31,12 +48,12 @@ import { DatePipe } from '@angular/common';
  * This component allows users to view, update, and delete their profile.
  */
 @Component({
-  selector: 'app-user-profile-component',
-  templateUrl: './user-profile-component.component.html',
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
   standalone: true,
-  styleUrls: ['./user-profile-component.component.scss'],
+  styleUrls: ['./profile.component.scss'],
   imports: [
-    NavgationBarComponent,
+    NavigationBarComponent,
     MatCard,
     MatCardHeader,
     MatCardTitle,
@@ -52,27 +69,15 @@ import { DatePipe } from '@angular/common';
     DatePipe,
   ],
 })
-export class UserProfileComponentComponent implements OnInit {
-  user: any;
-  userData: any = {}; // Initialize userData object to store form values
+export class ProfileComponent implements OnInit {
+  user: User | null = null;
+  userData: UserData = { username: '', email: '', birthday: '', password: '' };
   confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent> | undefined;
 
-  /**
-   * Constructor for UserProfileComponentComponent.
-   * @constructor
-   * @param {UserRegistrationService} fetchApiData - Service for making API calls related to user registration.
-   * @param {MatSnackBar} snackBar - Service for displaying notifications to the user.
-   * @param {Router} router - Angular router for navigation.
-   * @param {MatDialog} dialog - Angular Material dialog service for confirmation dialogs.
-   * @param {ChangeDetectorRef} cdRef - Change detector reference for detecting changes in the component.
-   */
-  constructor(
-    public fetchApiData: UserRegistrationService,
-    private snackBar: MatSnackBar,
-    private router: Router,
-    private dialog: MatDialog,
-    private cdRef: ChangeDetectorRef
-  ) {}
+  fetchApiData = inject(UserRegistrationService);
+  snackBar = inject(MatSnackBar);
+  router = inject(Router);
+  private dialog = inject(MatDialog);
 
   /**
    * Angular lifecycle hook called after component initialization.
@@ -88,13 +93,17 @@ export class UserProfileComponentComponent implements OnInit {
    */
   getUser(): void {
     const storedUser = localStorage.getItem('user');
+    console.log('storedUser', storedUser);
     if (storedUser) {
       this.user = JSON.parse(storedUser);
+      console.log('this.user', this.user);
+
       // Set initial values for form fields
-      this.userData.username = this.user.Username;
+      this.userData.username = this.user?.Username;
       this.userData.password = ''; // Set default password value if needed
-      this.userData.birthday = this.user.Birthday;
-      this.userData.email = this.user.Email;
+      this.userData.birthday = this.user?.Birthday;
+      this.userData.email = this.user?.Email;
+      console.log('userData', this.userData);
     } else {
       console.error('User not found in local storage.');
     }
@@ -105,9 +114,8 @@ export class UserProfileComponentComponent implements OnInit {
    * It sends updated user data to the backend for updating the user's profile.
    */
   updateProfile(): void {
-    // Call service method to update user data
     this.fetchApiData
-      .editUser(this.user.Username, {
+      .editUser(this.user!.Username, {
         Username: this.userData.username,
         Password: this.userData.password,
         Email: this.userData.email,
@@ -115,28 +123,21 @@ export class UserProfileComponentComponent implements OnInit {
       })
       .subscribe(
         (response) => {
-          // Handle successful update
-          console.log('Profile updated successfully:', response);
-          // Optionally, update the local user object in case of changes
-
           this.user = response.body;
 
           this.userData.username = response.body.Username;
           this.userData.email = response.body.Email;
           this.userData.birthday = response.body.Birthday;
           this.userData.password = response.body.Password;
+
           localStorage.setItem('user', JSON.stringify(response.body));
           this.snackBar.open('Profile updated successfully', 'Close', {
             duration: 3000,
           });
 
-          this.user.Username = response.Username;
-          this.user.Email = response.Email;
-          this.user.Birthday = response.Birthday;
-
-          this.cdRef.detectChanges();
-
-          console.log('After profile update:', this.user);
+          this.user!.Username = response.Username;
+          this.user!.Email = response.Email;
+          this.user!.Birthday = response.Birthday;
         },
         (error) => {
           console.error('Error updating profile:', error);
@@ -158,8 +159,7 @@ export class UserProfileComponentComponent implements OnInit {
   deleteProfile(): void {
     if (this.user && this.user.Username) {
       this.fetchApiData.deleteUser(this.user.Username).subscribe(
-        (response) => {
-          console.log('Delete response:', response);
+        () => {
           localStorage.removeItem('user');
           localStorage.removeItem('token');
           this.router.navigate(['/welcome']);
@@ -177,7 +177,6 @@ export class UserProfileComponentComponent implements OnInit {
       );
     } else {
       console.error('User or username is not defined.');
-      // Handle the case where user or username is not defined
     }
   }
 

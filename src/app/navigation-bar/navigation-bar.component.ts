@@ -11,9 +11,9 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
  * This component provides navigation functionality and includes a logout feature.
  */
 @Component({
-  selector: 'app-navgation-bar',
-  templateUrl: './navgation-bar.component.html',
-  styleUrl: './navgation-bar.component.scss',
+  selector: 'app-navigation-bar',
+  templateUrl: './navigation-bar.component.html',
+  styleUrl: './navigation-bar.component.scss',
   standalone: true,
   imports: [
     MatToolbar,
@@ -23,18 +23,17 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
     MatTabsModule,
   ],
 })
-export class NavgationBarComponent {
+export class NavigationBarComponent {
   private readonly router = inject(Router);
   dialog = inject(MatDialog);
-  // confirmationDialogRef = inject(MatDialogRef<ConfirmationDialogComponent>);
-  // confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent>
+
   /**
    * Function to handle user logout.
    * It removes the authentication token from local storage and navigates the user back to the welcome page.
    */
   logout(): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '300px',
+      width: '20rem',
       data: {
         title: 'Confirmation',
         message: 'Are you sure you want to logout?',

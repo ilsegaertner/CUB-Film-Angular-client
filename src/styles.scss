@@ -42,6 +42,20 @@ html {
   background-color: black;
 }
 
+.mat-mdc-card-subtitle {
+  color: gray !important;
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: var(--background-alt) !important;
+}
+
+.normal-heading {
+  color: var(--background-main) !important;
+  font-weight: 900 !important;
+  // letter-spacing: 0.01em !important;
+}
+
 html,
 body {
   height: 100%;

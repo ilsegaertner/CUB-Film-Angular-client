@@ -6,11 +6,12 @@
 
 .welcome-wrapper {
   min-height: 100svh;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding-inline: 4rem;
+  padding-inline: 1rem;
 }
 
 .login-signup-form {

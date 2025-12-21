@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { HttpResponse } from '@angular/common/http';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MovieViewComponent } from '../movie-view/movie-view.component';
-import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component';
-import { DirectorDialogComponent } from '../director-dialog/director-dialog.component';
-import { SynopsisDialogComponent } from '../synopsis-dialog/synopsis-dialog.component';
+import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
+import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
+import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.component';
 
-import { NavgationBarComponent } from '../navgation-bar/navgation-bar.component';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { NgStyle, NgClass } from '@angular/common';
 import { MatFormField } from '@angular/material/form-field';
 import { MatLabel, MatInput } from '@angular/material/input';
@@ -24,6 +24,31 @@ import {
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
+interface Genre {
+  // id?
+  Description: string;
+  Name: string;
+}
+interface Director {
+  // id?
+  Name: string;
+  Bio: string;
+  Birth: string;
+  Movies: string[]; //improve
+}
+
+export interface Movie {
+  _id: string;
+  Year: string;
+  Title: string;
+  ImagePath: string;
+  Genre: Genre;
+  Featured: boolean;
+  Director: Director;
+  Description: string;
+  Actors: string[];
+}
+
 /**
  * @component MovieCardComponent
  * @description Component for displaying movie cards.
@@ -35,7 +60,7 @@ import { MatIcon } from '@angular/material/icon';
   styleUrls: ['./movie-card.component.scss'],
   standalone: true,
   imports: [
-    NavgationBarComponent,
+    NavigationBarComponent,
     NgStyle,
     NgClass,
     MatFormField,
@@ -51,27 +76,17 @@ import { MatIcon } from '@angular/material/icon';
     MatIcon,
   ],
 })
-export class MovieCardComponent {
-  movies: any[] = [];
+export class MovieCardComponent implements OnInit {
+  movies: Movie[] = [];
   favorites: { [movieId: string]: boolean } = {};
   searchTerm: string = '';
   toggleSwitchChecked: boolean = false;
 
-  /**
-   * Constructor for MovieCardComponent.
-   * @constructor
-   * @param {UserRegistrationService} fetchApiData - Service for fetching movie data from the backend.
-   * @param {MatDialog} dialog - Angular Material dialog service for opening dialogs.
-   * @param {MatSnackBar} snackBar - Angular Material snack bar service for displaying notifications.
-   */
-  constructor(
-    public fetchApiData: UserRegistrationService,
-    public dialog: MatDialog,
-    private snackBar: MatSnackBar
-  ) {}
+  fetchApiData = inject(UserRegistrationService);
+  dialog = inject(MatDialog);
+  snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
-    //After implementing the function getMovies(), it's then called in the ngOnInit() lifecycle hook. ngOnInit() is called when Angular is done creating the component.
     this.getMovies();
   }
 
@@ -81,10 +96,11 @@ export class MovieCardComponent {
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe(
       (response: HttpResponse<any[]>) => {
+        console.log('response', response);
         // Check if the response body is an array
         if (Array.isArray(response.body)) {
+          console.log('movie response body:', response.body);
           this.movies = response.body;
-          console.log(this.movies);
         } else {
           console.error('Invalid response format. Expected an array.');
         }
@@ -93,15 +109,13 @@ export class MovieCardComponent {
         console.error('Error fetching movies:', error);
       }
     );
-    //   return this.movies;
-    // });
   }
 
   /**
    * Opens a dialog to display detailed information about a movie.
-   * @param {any} movie - The selected movie.
+   * @param {Movie} movie - The selected movie.
    */
-  openMovieView(movie: any): void {
+  openMovieView(movie: Movie): void {
     this.dialog.open(MovieViewComponent, {
       width: '40rem',
       data: { movie: movie },
@@ -110,9 +124,9 @@ export class MovieCardComponent {
 
   /**
    * Opens a dialog to display information about the genre of a movie.
-   * @param {any} movie - The movie object containing genre information.
+   * @param {Movie} movie - The movie object containing genre information.
    */
-  openGenreDialog(movie: any): void {
+  openGenreDialog(movie: Movie): void {
     this.fetchApiData.getGenre(movie.Genre.Name).subscribe(
       (result) => {
         this.dialog.open(GenreDialogComponent, {
@@ -128,9 +142,9 @@ export class MovieCardComponent {
 
   /**
    * Opens a dialog to display information about the director of a movie.
-   * @param {any} movie - The movie object containing director information.
+   * @param {Movie} movie - The movie object containing director information.
    */
-  openDirectorDialog(movie: any): void {
+  openDirectorDialog(movie: Movie): void {
     this.fetchApiData.getDirector(movie.Director.Name).subscribe(
       (result) => {
         this.dialog.open(DirectorDialogComponent, {
@@ -146,9 +160,9 @@ export class MovieCardComponent {
 
   /**
    * Opens a dialog to display the synopsis of a movie.
-   * @param {any} movie - The movie object containing synopsis information.
+   * @param {Movie} movie - The movie object containing synopsis information.
    */
-  openSynopsisDialog(movie: any): void {
+  openSynopsisDialog(movie: Movie): void {
     this.dialog.open(SynopsisDialogComponent, {
       width: '40rem',
       data: { movie: movie },
@@ -175,7 +189,7 @@ export class MovieCardComponent {
    * @param {string} movieId - The ID of the movie card.
    * @returns {boolean} - Indicates whether the movie card is marked as favorite.
    */
-  isFavorite(movieId: string): boolean {
+  isFavorite(movieId: Movie['_id']): boolean {
     return this.favorites[movieId] || false;
   }
 
