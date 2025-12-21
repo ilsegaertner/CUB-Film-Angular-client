@@ -69,7 +69,7 @@
             name="birthday"
             [(ngModel)]="userData.birthday"
             placeholder="Update your birthday"
-            value="{{ user?.Birthday | date }}"
+            value="{{ user.Birthday | date }}"
           />
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -79,7 +79,7 @@
             name="email"
             [(ngModel)]="userData.email"
             placeholder="Update your email"
-            value="{{ user?.Email }}"
+            value="{{ user.Email }}"
           />
         </mat-form-field>
       </form>

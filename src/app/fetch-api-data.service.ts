@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { catchError, finalize, map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import {
   HttpHeaders,
   HttpErrorResponse,
@@ -7,6 +7,7 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { LoginUserData } from './login-signup/login-form/models';
 
 //Api source
 const apiUrl = 'https://cub-film-data-dc72bcc7ff05.herokuapp.com/';
@@ -57,17 +58,6 @@ export class UserRegistrationService {
   }
 
   /**
-   * @description Extract non-typed response data from the API response.
-   * @param {HttpResponse<any>} res - API response.
-   * @returns {any} - Extracted response data.
-   * @private
-   */
-  private extractResponseData(res: HttpResponse<any>): any {
-    const body = res;
-    return body || {};
-  }
-
-  /**
    * @description Make an API call for user registration.
    * @param {any} userDetails - User details for registration.
    * @returns {Observable<any>} - Observable for the API response.
@@ -102,9 +92,9 @@ export class UserRegistrationService {
    * @param {any} userDetails - User details for login.
    * @returns {Observable<string>} - Observable for the API response containing the user token.
    */
-  userLogin(userDetails: any): Observable<any> {
-    console.log(userDetails);
-    const queryParams = `?Username=${userDetails.Username}&Password=${userDetails.Password}`;
+  userLogin(loginUserData: LoginUserData): Observable<any> {
+    console.log(loginUserData);
+    const queryParams = `?Username=${loginUserData.Username}&Password=${loginUserData.Password}`;
     const headers = new HttpHeaders({
       'Content-Type': 'x-www-form-urlencoded',
     });

@@ -1,6 +1,5 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MovieCardComponent } from '../movie-card.component';
 import {
   MatCard,
   MatCardHeader,
@@ -8,6 +7,7 @@ import {
   MatCardContent,
   MatCardSubtitle,
 } from '@angular/material/card';
+import { Genre } from './models';
 
 /**
  * @component GenreDialogComponent
@@ -29,28 +29,16 @@ import {
   ],
 })
 export class GenreDialogComponent {
-  genre: any;
+  genreDialogRef = inject(MatDialogRef<GenreDialogComponent>);
+  data = inject(MAT_DIALOG_DATA);
 
-  /**
-   * Constructor for GenreDialogComponent.
-   * @constructor
-   * @param {MatDialogRef<GenreDialogComponent>} dialogRef - Reference to the Material dialog for the genre dialog.
-   * @param {any} data - Data passed to the dialog, containing genre information.
-   */
-  constructor(
-    public dialogRef: MatDialogRef<GenreDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    console.log('Received data in GenreDialogComponent:', data);
-    // Extract the genre from the response body
-    this.genre = data.genre?.body?.Genre || null;
-  }
+  genre: Genre = this.data.genre?.body?.Genre || null;
 
   /**
    * Function to handle closing the dialog.
    * This function is called when the user clicks outside the dialog or on the cancel button.
    */
   onNoClick(): void {
-    this.dialogRef.close();
+    this.genreDialogRef?.close();
   }
 }

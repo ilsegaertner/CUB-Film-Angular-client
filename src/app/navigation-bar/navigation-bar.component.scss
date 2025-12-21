@@ -4,18 +4,17 @@
 
 .nav-ul {
   display: flex;
-  flex-direction: row-reverse;
-  padding-inline: 0.5rem;
-}
-
-.nav-ul div {
-  display: flex;
   flex-direction: row;
+  padding-inline: 0.5rem;
   align-items: flex-end;
 }
 
 .li-item:first-child {
   flex: 1;
+}
+
+.li-item {
+  justify-content: flex-end;
 }
 
 // .li-item .mat-toolbar-multiple-rows {

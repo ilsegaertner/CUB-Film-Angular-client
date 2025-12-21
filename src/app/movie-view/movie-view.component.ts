@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   MatCard,
@@ -18,7 +18,6 @@ import {
   templateUrl: './movie-view.component.html',
   styleUrl: './movie-view.component.scss',
   standalone: true,
-
   imports: [
     MatCard,
     MatCardHeader,
@@ -34,17 +33,14 @@ export class MovieViewComponent {
    * @param {MatDialogRef<MovieViewComponent>} dialogRef - Reference to the dialog component.
    * @param {any} data - Data passed to the dialog component.
    */
-  constructor(
-    public dialogRef: MatDialogRef<MovieViewComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any //  initializes the data property with the data passed to the dialog
-  ) {
-    console.log('Received data in MovieViewComponent:', data);
-  }
+
+  movieViewDialogRef = inject(MatDialogRef<MovieViewComponent>);
+  data = inject(MAT_DIALOG_DATA);
 
   /**
    * Function to handle the click event when the user closes the dialog.
    */
   onNoClick(): void {
-    this.dialogRef.close();
+    this.movieViewDialogRef.close();
   }
 }

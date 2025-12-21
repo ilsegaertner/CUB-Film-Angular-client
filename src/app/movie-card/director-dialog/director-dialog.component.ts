@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   MatDialogRef,
   MAT_DIALOG_DATA,
@@ -11,6 +11,7 @@ import {
   MatCardContent,
   MatCardSubtitle,
 } from '@angular/material/card';
+import { Director } from './models';
 
 /**
  * @component DirectorDialogComponent
@@ -32,28 +33,17 @@ import {
   ],
 })
 export class DirectorDialogComponent {
-  director: any;
+  data = inject(MAT_DIALOG_DATA);
+  director: Director = this.data.director?.body?.Director || null;
 
-  /**
-   * Constructor for DirectorDialogComponent.
-   * @constructor
-   * @param {MatDialogRef<DirectorDialogComponent>} dialogRef - Reference to the Material dialog for the director dialog.
-   * @param {MatDialog} dialog - Reference to the Material dialog service for opening dialogs.
-   * @param {any} data - Data passed to the dialog, containing director information.
-   */
-  constructor(
-    private dialogRef: MatDialogRef<DirectorDialogComponent>,
-    public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    this.director = data.director?.body?.Director || null;
-  }
+  dialog = inject(MatDialog);
+  directorDialogRef = inject(MatDialogRef<DirectorDialogComponent>);
 
   /**
    * Function to handle closing the dialog.
    * This function is called when the user clicks outside the dialog or on the cancel button.
    */
   onNoClick(): void {
-    this.dialogRef.close();
+    this.directorDialogRef?.close();
   }
 }

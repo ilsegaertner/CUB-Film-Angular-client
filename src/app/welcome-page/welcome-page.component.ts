@@ -24,7 +24,7 @@ export class WelcomePageComponent {
    * This function is triggered when the signup button is clicked.
    */ openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
-      width: '280px',
+      width: '30rem',
     });
   }
 
@@ -33,7 +33,7 @@ export class WelcomePageComponent {
    */
   openLoginDialog(): void {
     this.dialog.open(LoginFormComponent, {
-      width: '280px',
+      width: '30rem',
     });
   }
 }

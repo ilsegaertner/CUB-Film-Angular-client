@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, input, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
+import { LoginUserData } from './models';
 
 /**
  * @component LoginFormComponent
@@ -40,7 +41,7 @@ import { MatButton } from '@angular/material/button';
   ],
 })
 export class LoginFormComponent {
-  @Input() userLoginData = { Username: '', Password: '' };
+  @Input() userLoginData: LoginUserData = { Username: '', Password: '' };
 
   fetchApiData = inject(UserRegistrationService);
   dialogRef = inject(MatDialogRef<LoginFormComponent>);

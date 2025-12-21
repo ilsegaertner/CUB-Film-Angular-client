@@ -27,12 +27,12 @@ import {
   ],
 })
 export class SynopsisDialogComponent {
-  dialogRef = inject(MatDialogRef<SynopsisDialogComponent>);
+  synopsisDialogRef = inject(MatDialogRef<SynopsisDialogComponent>);
   data = inject(MAT_DIALOG_DATA);
 
   movie = this.data?.movie ?? null;
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.synopsisDialogRef.close();
   }
 }

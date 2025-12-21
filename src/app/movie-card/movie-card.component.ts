@@ -225,7 +225,6 @@ export class MovieCardComponent implements OnInit {
    * @returns {Object} - An object containing CSS properties for styling the toggle button.
    */
   toggleButton(): { [key: string]: string } {
-    // Check the toggle switch state and apply styles accordingly
     if (this.toggleSwitchChecked) {
       return {
         order: '2',
