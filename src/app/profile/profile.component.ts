@@ -38,8 +38,9 @@ interface User {
 interface UserData {
   birthday?: User['Birthday'];
   email?: User['Email'];
-  username?: User['Username'];
+  username: User['Username'];
   password?: string;
+  favouriteMovies: User['FavouriteMovies'];
 }
 
 /**
@@ -71,7 +72,13 @@ interface UserData {
 })
 export class ProfileComponent implements OnInit {
   user: User | null = null;
-  userData: UserData = { username: '', email: '', birthday: '', password: '' };
+  userData: UserData = {
+    username: '',
+    email: '',
+    birthday: '',
+    password: '',
+    favouriteMovies: [],
+  };
   confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent> | undefined;
 
   fetchApiData = inject(UserRegistrationService);
@@ -79,9 +86,6 @@ export class ProfileComponent implements OnInit {
   router = inject(Router);
   private dialog = inject(MatDialog);
 
-  /**
-   * Angular lifecycle hook called after component initialization.
-   */
   ngOnInit(): void {
     this.getUser();
   }
@@ -93,17 +97,14 @@ export class ProfileComponent implements OnInit {
    */
   getUser(): void {
     const storedUser = localStorage.getItem('user');
-    console.log('storedUser', storedUser);
     if (storedUser) {
       this.user = JSON.parse(storedUser);
-      console.log('this.user', this.user);
 
-      // Set initial values for form fields
-      this.userData.username = this.user?.Username;
-      this.userData.password = ''; // Set default password value if needed
+      this.userData.username = this.user!.Username;
+      this.userData.password = '';
       this.userData.birthday = this.user?.Birthday;
       this.userData.email = this.user?.Email;
-      console.log('userData', this.userData);
+      this.userData.favouriteMovies = this.user?.FavouriteMovies;
     } else {
       console.error('User not found in local storage.');
     }

@@ -21,6 +21,9 @@
           Birthday: {{ userData.birthday | date }}</mat-card-subtitle
         >
         <mat-card-subtitle>
+          Favourite Movies: {{ userData.favouriteMovies }}</mat-card-subtitle
+        >
+        <mat-card-subtitle>
           Member since: @if(user.createdAt){
           <span> {{ user.createdAt | date }} </span>}@else {
           <span>-</span>

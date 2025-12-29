@@ -1,19 +1,40 @@
 @if (data?.movie) {
-  <mat-card>
-    <mat-card-header
-      ><mat-card-title>
+<mat-card>
+  <mat-card-header
+    ><mat-card-title>
       {{ data.movie.Title }}
     </mat-card-title>
     <mat-card-subtitle
       >Directed by: {{ data.movie.Director.Name }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <div class="image-flex">
+    <img
+      src="{{ data.movie.ImagePath }}"
+      alt="{{ data.movie.Title }}"
+      fill
+      class="photo"
+    />
+    <div class="video-wrap">
+      @if(!videoLoaded) {
+      <div class="skeleton"></div>
+
+      }
+      <iframe
+        class="video"
+        [src]="safeSrc"
+        (load)="onVideoLoad()"
+        [class.is-loaded]="videoLoaded"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
       >
-    </mat-card-header>
-    <br />
-    <img src="{{ data.movie.ImagePath }}" alt="{{ data.movie.Title }}" fill />
-    <br />
-    <mat-card-content>
-      <mat-card-subtitle>Genre: {{ data.movie.Genre.Name }}</mat-card-subtitle>
-      <mat-card-subtitle>Year: {{ data.movie.Year }}</mat-card-subtitle>
-    </mat-card-content>
-  </mat-card>
+      </iframe>
+    </div>
+  </div>
+  <mat-card-content>
+    <mat-card-subtitle>Genre: {{ data.movie.Genre.Name }}</mat-card-subtitle>
+    <mat-card-subtitle>Year: {{ data.movie.Year }}</mat-card-subtitle>
+  </mat-card-content>
+</mat-card>
 }

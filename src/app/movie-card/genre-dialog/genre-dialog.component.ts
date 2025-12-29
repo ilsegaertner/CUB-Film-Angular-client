@@ -34,10 +34,6 @@ export class GenreDialogComponent {
 
   genre: Genre = this.data.genre?.body?.Genre || null;
 
-  /**
-   * Function to handle closing the dialog.
-   * This function is called when the user clicks outside the dialog or on the cancel button.
-   */
   onNoClick(): void {
     this.genreDialogRef?.close();
   }

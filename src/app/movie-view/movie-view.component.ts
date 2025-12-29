@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   MatCard,
@@ -7,6 +7,7 @@ import {
   MatCardSubtitle,
   MatCardContent,
 } from '@angular/material/card';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 /**
  * @component MovieViewComponent
@@ -27,20 +28,25 @@ import {
   ],
 })
 export class MovieViewComponent {
-  /**
-   * Constructor for MovieViewComponent.
-   * @constructor
-   * @param {MatDialogRef<MovieViewComponent>} dialogRef - Reference to the dialog component.
-   * @param {any} data - Data passed to the dialog component.
-   */
+  sanitizer = inject(DomSanitizer);
+
+  videoLoaded = false;
 
   movieViewDialogRef = inject(MatDialogRef<MovieViewComponent>);
   data = inject(MAT_DIALOG_DATA);
 
-  /**
-   * Function to handle the click event when the user closes the dialog.
-   */
+  videoPath = this.data.movie.VideoPath;
+
+  safeSrc: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+    this.videoPath
+  );
+
+  onVideoLoad(): void {
+    this.videoLoaded = true;
+  }
+
   onNoClick(): void {
     this.movieViewDialogRef.close();
+    this.videoLoaded = false;
   }
 }

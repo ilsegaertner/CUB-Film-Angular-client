@@ -39,10 +39,6 @@ export class DirectorDialogComponent {
   dialog = inject(MatDialog);
   directorDialogRef = inject(MatDialogRef<DirectorDialogComponent>);
 
-  /**
-   * Function to handle closing the dialog.
-   * This function is called when the user clicks outside the dialog or on the cancel button.
-   */
   onNoClick(): void {
     this.directorDialogRef?.close();
   }

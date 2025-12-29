@@ -67,14 +67,18 @@
         <mat-card class="movie-container">
           <mat-card-header
             ><mat-card-title>
-              <span class="title-pretext"> {{ movie.Title }} </span>
+              <div class="title-pretext">
+                <span> {{ movie.Title }} </span>
+                @if(movie.Featured) {
+                <span class="featured-flag">🔥</span> }
+              </div>
             </mat-card-title>
             <mat-card-subtitle
               ><span class="italic-pretext"
                 >Directed by:
                 <span class="bold-pretext">{{ movie.Director.Name }}</span>
-              </span></mat-card-subtitle
-            >
+              </span>
+            </mat-card-subtitle>
           </mat-card-header>
           @if (movie.ImagePath) {<img
             [src]="movie.ImagePath"

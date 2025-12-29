@@ -42,6 +42,7 @@ export interface Movie {
   Year: string;
   Title: string;
   ImagePath: string;
+  VideoPath: string;
   Genre: Genre;
   Featured: boolean;
   Director: Director;
@@ -117,7 +118,7 @@ export class MovieCardComponent implements OnInit {
    */
   openMovieView(movie: Movie): void {
     this.dialog.open(MovieViewComponent, {
-      width: '40rem',
+      width: '60rem',
       data: { movie: movie },
     });
   }
